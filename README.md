@@ -5,9 +5,10 @@ Trabalho desenvolvido durante a disciplina de Banco de dados
 
 ### 1. COMPONENTES<br>
 Integrantes do grupo<br>
-primeiro_componente_do_grupo:email_primeiro_componente@dominio.com<br>
-segundo_componente_do_grupo:email_segundo_componente@dominio.com<br>
-...<br>
+Camila Egydio: camilafragaegydio@gmail.com<br>
+Davi Nunes: davinunesribeiro@gmail.com<br>
+Isabelly Andrades: isabellyandrades.ifes@gmail.com<br>
+Yasmin Santana: mamin8172@gmail.com<br>
 
 ### 2.INTRODUÇÃO E MOTIVAÇÃO<br>
 Este documento contém a especificação do projeto do banco de dados <nome do projeto> 
