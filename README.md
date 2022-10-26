@@ -20,9 +20,6 @@ Yasmin Santana: mamin8172@gmail.com<br>
 > O sistema delivery da Dociê conterá as informações aqui detalhadas. Do CLIENTE armazenará o seu código, cpf, nome e telefone. Do MOTOBOY serão armazenados código, nome, cnh, placa da moto utilizada na entrega e salário. Uma pessoa é um cliente ou um motoboy, mas estes, necessariamente,  são uma pessoa. Do PEDIDO serão armazenados código, forma de pagamento, data e hora, e endereço (rua, número, bairro, cidade, cep, estado). Um motoboy entrega nenhum ou vários pedidos e um pedido só pode ser entregue por um único motoboy, visto que um pedido é entregue apenas uma vez. Um cliente pode fazer um ou vários pedidos quantas vezes preferir, sendo assim, um pedido só é feito por um cliente. Do PRODUTO serão armazenados código, nome, descrição e preço. Um pedido pode ter incluído um ou vários produtos, mas o produto pode estar em um ou vários pedidos.
 
 ### 4.PERGUNTAS A SEREM RESPONDIDAS E TABELA DE DADOS<br>
-#### 4.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
-    a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
-    b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!
     
 > A Confeitaria Dociê precisa inicialmente dos seguintes relatórios:
 * Relatório que mostre o nome de cada supervisor(a) e a quantidade de empregados supervisionados.
@@ -33,19 +30,9 @@ Yasmin Santana: mamin8172@gmail.com<br>
 * Relatório que obtenha a frequencia absoluta e frequencia relativa da quantidade de cpfs únicos no relatório anterior. Apresente os resultados ordenados de forma decrescente pela frequencia relativa.
 
  ### 5.MODELO CONCEITUAL<br>
-    A) Utilizar a Notação adequada (Preferencialmente utilizar o BR Modelo 3)
-    B) O mínimo de entidades do modelo conceitual pare este trabalho será igual a 5 e o Máximo 7.
-        * informe quais são as 3 principais entidades do sistema em densenvolvimento<br>(se houverem mais de 3 entidades, pense na importância da entidade para o sistema)       
-    C) Principais fluxos de informação/entidades do sistema (mínimo 3). <br>Dica: normalmente estes fluxos estão associados as tabelas que conterão maior quantidade de dados 
-    D) Qualidade e Clareza
-        Garantir que a semântica dos atributos seja clara no esquema (nomes coerentes com os dados).
-        Criar o esquema de forma a garantir a redução de informação redundante, possibilidade de valores null, 
-        e tuplas falsas (Aplicar os conceitos de normalização abordados).   
         
 ![Alt text](https://github.com/discipbd1/trab01/blob/master/images/concept_sample.png?raw=true "Modelo Conceitual")
     
-    
-        
     
 #### 5.1 Validação do Modelo Conceitual
     [Grupo01]: [Nomes dos que participaram na avaliação]
