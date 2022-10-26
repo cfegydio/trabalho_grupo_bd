@@ -35,8 +35,8 @@ Yasmin Santana: mamin8172@gmail.com<br>
     
     
 #### 5.1 Validação do Modelo Conceitual
-    [Grupo01]: [Nomes dos que participaram na avaliação]
-    [Grupo02]: [Nomes dos que participaram na avaliação]
+    [Grupo01]: Esther, Raynan, Sofia e Carlos Eduardo
+    [Grupo02]: Mariana, Bruna, Illana e Daianny
 
 #### 5.2 Descrição dos dados 
     [objeto]: [descrição do objeto]
