@@ -11,19 +11,11 @@ Isabelly Andrades: isabellyandrades.ifes@gmail.com<br>
 Yasmin Santana: mamin8172@gmail.com<br>
 
 ### 2.INTRODUÇÃO E MOTIVAÇÃO<br>
-Este documento contém a especificação do projeto do banco de dados <nome do projeto> 
-<br>e motivação da escolha realizada. <br>
 
 > A Confeitaria Dociê tem o objetivo de melhorar seu atendimento. Sendo uma empresa recente, fica localizada em um lugar de difícil acesso. O sistema delivery da Dociê tem a intenção de melhorar o atendimento e entrega dos produtos, facilitando a compra de seus clientes através de um site de pedidos. Para este sistema realizar as operações será necessário o armazenamento do Cliente, Motoboy, Pedido e o Produto. O sistema deverá gerar os pedidos feitos e a entrega dele de forma segura, gerando relatórios provenientes dessas ações. 
  
 
 ### 3.MINI-MUNDO<br>
-
-Descrever o mini-mundo! (Não deve ser maior do que 30 linhas, se necessário resumir para justar) <br>
-Entrevista com o usuário e identificação dos requisitos.(quando for o caso de sistemas com cliente  real)<br>
-Descrição textual das regras de negócio definidas como um  subconjunto do mundo real 
-cujos elementos são propriedades que desejamos incluir, processar, armazenar, 
-gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 > O sistema delivery da Dociê conterá as informações aqui detalhadas. Do CLIENTE armazenará o seu código, cpf, nome e telefone. Do MOTOBOY serão armazenados código, nome, cnh, placa da moto utilizada na entrega e salário. Uma pessoa é um cliente ou um motoboy, mas estes, necessariamente,  são uma pessoa. Do PEDIDO serão armazenados código, forma de pagamento, data e hora, e endereço (rua, número, bairro, cidade, cep, estado). Um motoboy entrega nenhum ou vários pedidos e um pedido só pode ser entregue por um único motoboy, visto que um pedido é entregue apenas uma vez. Um cliente pode fazer um ou vários pedidos quantas vezes preferir, sendo assim, um pedido só é feito por um cliente. Do PRODUTO serão armazenados código, nome, descrição e preço. Um pedido pode ter incluído um ou vários produtos, mas o produto pode estar em um ou vários pedidos. 
 
