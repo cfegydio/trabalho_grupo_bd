@@ -12,7 +12,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 ### 2.INTRODUÇÃO E MOTIVAÇÃO<br>
 
-> A Confeitaria Dociê tem o objetivo de melhorar seu atendimento. Sendo uma empresa recente, fica localizada em um lugar de difícil acesso. O sistema delivery da Dociê tem a intenção de melhorar o atendimento e entrega dos produtos, facilitando a compra de seus clientes através de um site de pedidos. Para este sistema realizar as operações será necessário o armazenamento do Cliente, Motoboy, Pedido e o Produto. O sistema deverá gerar os pedidos feitos e a entrega dele de forma segura, gerando relatórios provenientes dessas ações. 
+> A Confeitaria Dociê tem o objetivo de melhorar seu atendimento. Sendo uma empresa recente, fica localizada em um lugar de difícil acesso e entrega apenas para o estado do Espírito Santo. O sistema delivery da Dociê tem a intenção de melhorar o atendimento e entrega dos produtos, facilitando a compra de seus clientes através de um site de pedidos. Para este sistema realizar as operações será necessário o armazenamento do Cliente, Motoboy, Pedido e Produto. O sistema deverá gerar os pedidos e a entrega dos clientes de forma segura, gerando relatórios provenientes dessas ações. 
  
 
 ### 3.MINI-MUNDO<br>
