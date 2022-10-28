@@ -61,6 +61,11 @@ Yasmin Santana: mamin8172@gmail.com<br>
     FORMA_DE_PAGAMENTO: Tabela que armazena as informações relativas a forma de pagamento
     codigo: Campo que armazena o número de identificação de cada forma de pagamento
     forma: Campo que armazena o nome de cada forma de pagamento
+    
+    PEDIDO: Tabela que armazena as informações relativas ao pedido
+	   codigo: Campo que armazena o número de identificação de cada pedido
+   	data_hora: Campo que armazena a data e hora de cada pedido
+
 
 
 
