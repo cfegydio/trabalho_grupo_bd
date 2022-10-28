@@ -74,16 +74,16 @@ Yasmin Santana: mamin8172@gmail.com<br>
     complemento: Campo que armazena o complemento de cada endereço
 
     TIPO_LOGRADOURO: Tabela que armazena as informações relativas ao tipo de logradouro
-	   codigo: Campo que armazena o número de identificação de cada logradouro
-	   tipo: Campo que armazena o tipo de logradouro do endereço
+    codigo: Campo que armazena o número de identificação de cada logradouro
+    tipo: Campo que armazena o tipo de logradouro do endereço
 
     BAIRRO: Tabela que armazena as informações relativas ao bairro
-	   codigo: Campo que armazena o número de identificação de cada bairro
-	   bairro: Campo que armazena o bairro de endereço
+    codigo: Campo que armazena o número de identificação de cada bairro
+    bairro: Campo que armazena o bairro de endereço
 
     CIDADE: Tabela que armazena as informações relativas ao bairro
-	   codigo: Campo que armazena o número de identificação de cada cidade
-	   cidade: Campo que armazena a cidade de endereço
+    codigo: Campo que armazena o número de identificação de cada cidade
+    cidade: Campo que armazena a cidade de endereço
 
 
 
