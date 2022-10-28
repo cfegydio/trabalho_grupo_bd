@@ -165,7 +165,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
         
        
-### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
+### 8. INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
     INSERT INTO PRODUTO(codigo, nome, descricao, preco) VALUES
     (1, 'Fatia Nutellaja', 'Uma deliciosa fatia de  bolo com massa de bolo branco, recheio de nutella e brigadeiro de maracujá', 12.0),
     (2, 'Fatia Moraninho', 'Uma deliciosa fatia de  bolo com massa de bolo branco, recheio de morango e brigadeiro de ninho', 12.0),
@@ -364,7 +364,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 
 
-### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
+### 9.	TABELAS E PRINCIPAIS CONSULTAS<br>
     OBS: Usar o colab para apresentar os resultados que devem incluir as instruções SQL + resultados em forma de tabela.<br>
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
