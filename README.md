@@ -38,8 +38,8 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
     
 #### 5.1 Validação do Modelo Conceitual
-    [Grupo01]: Esther, Raynan, Sofia e Carlos Eduardo
-    [Grupo02]: Mariana, Bruna, Illana e Daianny
+    [Grupo01]: Carlos Eduardo, Esther, Raynan e Sofia
+    [Grupo02]: Bruna, Daianny, Illana e Mariana
 
 ### 5.2 Descrição dos dados 
     CLIENTE: Tabela que armazena as informações relativas ao cliente
