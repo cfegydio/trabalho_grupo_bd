@@ -54,11 +54,14 @@ Yasmin Santana: mamin8172@gmail.com<br>
         
        
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
-   
-
+    a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físico
+    (Drop para exclusão de tabelas + create definição de para tabelas e estruturas de dados + insert para dados a serem inseridos)
+    b) Criar um novo banco de dados para testar a restauracao 
+    (em caso de falha na restauração o grupo não pontuará neste quesito)
+    c) formato .SQL
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
-   <br>
+   OBS: Usar o colab para apresentar os resultados que devem incluir as instruções SQL + resultados em forma de tabela.<br>
    
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
