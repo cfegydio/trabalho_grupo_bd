@@ -91,7 +91,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 ### 6.	MODELO LÓGICO<br>
 
-![image](https://user-images.githubusercontent.com/91489199/198627605-2063a83c-c244-4c5c-bb1b-2bbe697d0c3a.png)
+![image](https://user-images.githubusercontent.com/91489199/198634349-8e24dec2-11d0-4894-bcb7-de25c13314a7.png)
 
 
 ### 7.	MODELO FÍSICO<br>
