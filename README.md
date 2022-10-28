@@ -12,25 +12,22 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 ### 2.INTRODUÇÃO E MOTIVAÇÃO<br>
 
-> A Confeitaria Dociê tem o objetivo de melhorar seu atendimento. Sendo uma empresa recente, fica localizada em um lugar de difícil acesso e entrega apenas para o estado do Espírito Santo. O sistema delivery da Dociê tem a intenção de melhorar o atendimento e entrega dos produtos, facilitando a compra de seus clientes através de um site de pedidos. Para este sistema realizar as operações será necessário o armazenamento do Cliente, Motoboy, Pedido e Produto. O sistema deverá gerar os pedidos e a entrega dos clientes de forma segura, gerando relatórios provenientes dessas ações. 
+> A Confeitaria Dociê tem o objetivo de melhorar seu atendimento. Sendo uma empresa recente, fica localizada em um lugar de difícil acesso. O sistema delivery da Dociê tem a intenção de melhorar o atendimento e entrega dos produtos, facilitando a compra de seus clientes através de um site de pedidos. Para este sistema realizar as operações será necessário o armazenamento do Cliente, Motoboy, Pedido e o Produto. O sistema deverá gerar os pedidos feitos e a entrega dele de forma segura, gerando relatórios provenientes dessas ações. 
  
 
 ### 3.MINI-MUNDO<br>
 
-> O sistema delivery da Dociê conterá as informações aqui detalhadas. Do CLIENTE armazenará o seu código, cpf, nome e telefone. De TELEFONE serão armazenados  Do MOTOBOY serão armazenados código, nome, cnh, placa da moto utilizada na entrega e salário. Do PEDIDO serão armazenados código e data e hora. De ENDEREÇO serão armazenados código, cep, número e logradouro. De BAIRRO serão armazenados código e bairro. De CIDADE serão armazenados código e cidade. De TIPO_LOGRADOURO serão armazenados código e tipo_logradouro.<br>
->Um cliente pode ter um ou vários telefones enquanto um telefone pode ter um cliente. Um cliente pode fazer um ou vários pedidos enquanto um pedido pode ser feito por um cliente. Um pedido pode ter um motoboy entregando enquanto um motoboy pode entregar vários pedidos. Um pedido pode ter uma forma de pagamento enquanto uma forma de pagamento pode ter vários pedidos. Um pedido pode ter um endereço enquanto um endereço pode ter nenhum ou vários pedidos. Um endereço pode ter um tipo_logradouro mas um tipo_logradouro pode ter nenhum ou vários endereços. Um endereço pode ter um bairro mas um bairro pode ter nenhum ou vários endereços. Um endereço pode ter um cidade mas um cidade pode ter nenhum ou vários endereços.
-
+> O sistema delivery da Dociê conterá as informações aqui detalhadas. Do CLIENTE armazenará o seu código, cpf, nome e telefone. De TELEFONE serão armazenados  Do MOTOBOY serão armazenados código, nome, cnh, placa da moto utilizada na entrega e salário. Do PEDIDO serão armazenados código e data e hora. De ENDEREÇO serão armazenados codigo, cep, numero e logradouro. De BAIRRO serão armazenados código e bairro. De CIDADE serão armazenados código e cidade. De TIPO_LOGRADOURO serão armazenados código e tipo_logradouro. <br>
+> Um cliente pode ter um ou vários telefones enquanto um telefone pode ter um cliente. Um cliente pode fazer um ou vários pedidos enquanto um pedido pode ser feito por um cliente. Um pedido pode ter um motoboy entregando enquanto um motoboy pode entregar vários pedidos. Um pedido pode ter uma forma de pagamento enquanto uma forma de pagamento pode ter vários pedidos. Um pedido pode ter um endereço enquanto um endereço pode ter nenhum ou vários pedidos. Um endereço pode ter um tipo_logradouro mas um tipo_logradouro pode ter nenhum ou vários endereços. Um endereço pode ter um bairro mas um bairro pode ter nenhum ou vários endereços. Um endereço pode ter um cidade mas um cidade pode ter nenhum ou vários endereços.
 
 
 ### 4.PERGUNTAS A SEREM RESPONDIDAS E TABELA DE DADOS<br>
     
 > A Confeitaria Dociê precisa inicialmente dos seguintes relatórios:
-* Relatório de capacitação dos funcionários. Mostrará o nome de cada motoboy e sua quantidade de entregas desde quando começou a trabalhar no local. 
-* Relatório que visa controlar a frequência dos clientes. As linhas resultantes devem apresentar o nome de cada cliente e a quantidade de pedidos já feitos por este
-* Relatório dos produtos favoritos e mais almejados. Será necessário o nome do produto e quantas vezes ele foi comprado. 
-* Relatório de pesquisa residencial. O bairro mais frequente em compras, sendo necessário seu endereço e quantidade de produtos vendidos para este local. 
-* Relatório sobre o melhor horário de vendas. Sendo necessário a data e hora das compras
-
+* Relatório que mostre o nome de cada supervisor(a) e a quantidade de empregados supervisionados.
+* Relatório relativo aos os supervisores e supervisionados. O resultado deve conter o nome do supervisor e nome do supervisionado além da quantidade total de horas que cada supervisionado tem alocada aos projetos existentes na empresa.
+* Relatorio que mostre para cada linha obtida o nome do departamento, o valor individual de cada salario existente no  departamento e a média geral de salarios dentre todos os empregados. Os resultados devem ser apresentados ordenados por departamento.
+* Relatório que mostre as informações relacionadas a todos empregados de empresa (sem excluir ninguém). As linhas resultantes devem conter informações sobre: rg, nome, salario do empregado, data de início do salario atual, nomes dos projetos que participa, quantidade de horas e localização nos referidos projetos, numero e nome dos departamentos aos quais está alocado, informações do historico de salário como inicio, fim, e valores de salarios antigos que foram inclusos na referida tabela (caso possuam informações na mesma), além de todas informações relativas aos dependentes. 
 
  ### 5.MODELO CONCEITUAL<br>
         
@@ -41,30 +38,56 @@ Yasmin Santana: mamin8172@gmail.com<br>
     [Grupo01]: Esther, Raynan, Sofia e Carlos Eduardo
     [Grupo02]: Mariana, Bruna, Illana e Daianny
 
-#### 5.2 Descrição dos dados 
-    CLIENTE: Tabela que armazena as informações relativas ao cliente<br>
-    CPF: campo que armazena o número de Cadastro de Pessoa Física para cada cliente da empresa.<br>
+### 5.2 Descrição dos dados 
+    CLIENTE: Tabela que armazena as informações relativas ao cliente
+    codigo: Campo que armazena o número de identificação de cada cliente          
+    cpf: Campo que armazena o cpf de cada cliente
+    nome: Campo que armazena o nome de cada cliente
+    telefone: Campo que relaciona os telefones com cada cliente
+             
+    MOTOBOY: Tabela que armazena as informações relativas ao motoboy
+    codigo: Campo que armazena o número de identificação de cada motoboy
+    placa_moto: Campo que armazena a placa da moto de cada motoboy
+    salario: Campo que armazena o salário de cada motoboy
+    cnh: Campo que armazena o cnh de cada motoboy
+    nome: Campo que armazena o nome de cada motoboy
+              
+    PRODUTO: Tabela que armazena as informações relativas ao produto
+    codigo: Campo que armazena o número de identificação do produto
+    nome: Campo que armazena o nome do produto
+    descricao: Campo que armazena a descrição do produto
+    preco: Campo que armazena o preço de cada produto
+           
+    FORMA_DE_PAGAMENTO: Tabela que armazena as informações relativas a forma de pagamento
+    codigo: Campo que armazena o número de identificação de cada forma de pagamento
+    forma: Campo que armazena o nome de cada forma de pagamento
+
+
+
+
 
 
 ### 6	MODELO LÓGICO<br>
-     
+        a) inclusão do esquema lógico do banco de dados
+        b) verificação de correspondencia com o modelo conceitual 
+        (não serão aceitos modelos que não estejam em conformidade)
 
 ### 7	MODELO FÍSICO<br>
-        
+        a) inclusão das instruções de criacão das estruturas em SQL/DDL 
+        (criação de tabelas, alterações, etc..) 
         
        
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
-    a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físico
-    (Drop para exclusão de tabelas + create definição de para tabelas e estruturas de dados + insert para dados a serem inseridos)
-    b) Criar um novo banco de dados para testar a restauracao 
-    (em caso de falha na restauração o grupo não pontuará neste quesito)
-    c) formato .SQL
+        a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físico
+        (Drop para exclusão de tabelas + create definição de para tabelas e estruturas de dados + insert para dados a serem inseridos)
+        b) Criar um novo banco de dados para testar a restauracao 
+        (em caso de falha na restauração o grupo não pontuará neste quesito)
+        c) formato .SQL
+
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
-   OBS: Usar o colab para apresentar os resultados que devem incluir as instruções SQL + resultados em forma de tabela.<br>
-   
+    OBS: Usar o colab para apresentar os resultados que devem incluir as instruções SQL + resultados em forma de tabela.<br>
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
-
 
 ># Marco de Entrega 01: Do item 1 até o item 9.1<br>
 
