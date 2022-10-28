@@ -95,28 +95,15 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 
 ### 7.	MODELO FÍSICO<br>
-
-    CREATE TABLE PEDIDO (
-        codigo integer PRIMARY KEY,
-        data_hora timestamp,
-        FK_CLIENTE_codigo integer references CLIENTE(codigo),
-        FK_MOTOBOY_codigo integer references MOTOBOY(codigo),
-        FK_PRODUTO_codigo integer references PRODUTO(codigo),
-        FK_FORMA_PAGAMENTO_codigo integer references FORMA_PAGAMENTO(codigo),
-        FK_ENDERECO_codigo integer references ENDERECO(codigo)
-    );
-
-    CREATE TABLE PRODUTO (
-        codigo integer PRIMARY KEY,
-        nome varchar(25),
-        descricao varchar(200),
-        preco float
-    );
-
     CREATE TABLE CLIENTE (
         codigo integer PRIMARY KEY,
         cpf varchar(14),
         nome varchar(80)
+    );
+
+    CREATE TABLE TELEFONE (
+        telefone integer PRIMARY KEY,
+        fk_CLIENTE_codigo integer references CLIENTE(codigo)
     );
 
     CREATE TABLE MOTOBOY (
@@ -127,25 +114,17 @@ Yasmin Santana: mamin8172@gmail.com<br>
         nome varchar(80)
     );
 
+    CREATE TABLE PRODUTO (
+        codigo integer PRIMARY KEY,
+        nome varchar(25),
+        descricao varchar(200),
+        preco float
+    );
+
     CREATE TABLE FORMA_PAGAMENTO (
         codigo integer PRIMARY KEY,
         forma varchar(20)
     );
-
-    CREATE TABLE TELEFONE (
-        telefone integer PRIMARY KEY,
-        fk_CLIENTE_codigo integer references CLIENTE(codigo)
-    );
-
-     CREATE TABLE ENDERECO (
-         codigo integer PRIMARY KEY,
-         cep varchar(9),
-         numero integer,
-         logradouro varchar(80),
-         fk_TIPO_LOGRADOURO_codigo integer references TIPO_LOGRADOURO(codigo),
-         fk_BAIRRO_codigo integer references BAIRRO(codigo),
-         fk_CIDADE_codigo integer references CIDADE(codigo)
-     );
 
      CREATE TABLE CIDADE (
          codigo integer PRIMARY KEY,
@@ -161,6 +140,26 @@ Yasmin Santana: mamin8172@gmail.com<br>
          codigo integer PRIMARY KEY,
          tipo varchar(20)
      );
+
+     CREATE TABLE ENDERECO (
+         codigo integer PRIMARY KEY,
+         cep varchar(9),
+         numero integer,
+         logradouro varchar(80),
+         fk_TIPO_LOGRADOURO_codigo integer references TIPO_LOGRADOURO(codigo),
+         fk_BAIRRO_codigo integer references BAIRRO(codigo),
+         fk_CIDADE_codigo integer references CIDADE(codigo)
+     );
+
+    CREATE TABLE PEDIDO (
+        codigo integer PRIMARY KEY,
+        data_hora timestamp,
+        FK_CLIENTE_codigo integer references CLIENTE(codigo),
+        FK_MOTOBOY_codigo integer references MOTOBOY(codigo),
+        FK_PRODUTO_codigo integer references PRODUTO(codigo),
+        FK_FORMA_PAGAMENTO_codigo integer references FORMA_PAGAMENTO(codigo),
+        FK_ENDERECO_codigo integer references ENDERECO(codigo)
+    );
         
        
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
