@@ -62,6 +62,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
    
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
+
 ># Marco de Entrega 01: Do item 1 até o item 9.1<br>
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
