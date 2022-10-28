@@ -17,17 +17,20 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 ### 3.MINI-MUNDO<br>
 
-> O sistema delivery da Dociê conterá as informações aqui detalhadas. Do CLIENTE armazenará o seu código, cpf, nome e telefone. De TELEFONE serão armazenados  Do MOTOBOY serão armazenados código, nome, cnh, placa da moto utilizada na entrega e salário. Do PEDIDO serão armazenados código e data e hora. De ENDEREÇO serão armazenados codigo, cep, numero e logradouro. De BAIRRO serão armazenados código e bairro. De CIDADE serão armazenados código e cidade. De TIPO_LOGRADOURO serão armazenados código e tipo_logradouro. <br>
+> O sistema delivery da Dociê conterá as informações aqui detalhadas. Do CLIENTE armazenará o seu código, cpf, nome e telefone. De TELEFONE serão armazenados  Do MOTOBOY serão armazenados código, nome, cnh, placa da moto utilizada na entrega e salário. Do PEDIDO serão armazenados código e data e hora. De ENDEREÇO serão armazenados código, cep, número e logradouro. De BAIRRO serão armazenados código e bairro. De CIDADE serão armazenados código e cidade. De TIPO_LOGRADOURO serão armazenados código e tipo_logradouro.<br>
 > Um cliente pode ter um ou vários telefones enquanto um telefone pode ter um cliente. Um cliente pode fazer um ou vários pedidos enquanto um pedido pode ser feito por um cliente. Um pedido pode ter um motoboy entregando enquanto um motoboy pode entregar vários pedidos. Um pedido pode ter uma forma de pagamento enquanto uma forma de pagamento pode ter vários pedidos. Um pedido pode ter um endereço enquanto um endereço pode ter nenhum ou vários pedidos. Um endereço pode ter um tipo_logradouro mas um tipo_logradouro pode ter nenhum ou vários endereços. Um endereço pode ter um bairro mas um bairro pode ter nenhum ou vários endereços. Um endereço pode ter um cidade mas um cidade pode ter nenhum ou vários endereços.
+
 
 
 ### 4.PERGUNTAS A SEREM RESPONDIDAS E TABELA DE DADOS<br>
     
 > A Confeitaria Dociê precisa inicialmente dos seguintes relatórios:
-* Relatório que mostre o nome de cada supervisor(a) e a quantidade de empregados supervisionados.
-* Relatório relativo aos os supervisores e supervisionados. O resultado deve conter o nome do supervisor e nome do supervisionado além da quantidade total de horas que cada supervisionado tem alocada aos projetos existentes na empresa.
-* Relatorio que mostre para cada linha obtida o nome do departamento, o valor individual de cada salario existente no  departamento e a média geral de salarios dentre todos os empregados. Os resultados devem ser apresentados ordenados por departamento.
-* Relatório que mostre as informações relacionadas a todos empregados de empresa (sem excluir ninguém). As linhas resultantes devem conter informações sobre: rg, nome, salario do empregado, data de início do salario atual, nomes dos projetos que participa, quantidade de horas e localização nos referidos projetos, numero e nome dos departamentos aos quais está alocado, informações do historico de salário como inicio, fim, e valores de salarios antigos que foram inclusos na referida tabela (caso possuam informações na mesma), além de todas informações relativas aos dependentes. 
+* Relatório de capacitação dos funcionários. Mostrará o nome de cada motoboy e sua quantidade de entregas desde quando começou a trabalhar no local. 
+* Relatório que visa controlar a frequência dos clientes. As linhas resultantes devem apresentar o nome de cada cliente e a quantidade de pedidos já feitos por este.
+* Relatório dos produtos favoritos e mais almejados. Será necessário o nome do produto e quantas vezes ele foi comprado. 
+* Relatório de pesquisa residencial. O bairro mais frequente em compras, sendo necessário seu endereço e quantidade de produtos vendidos para este local. 
+* Relatório sobre o melhor horário de vendas. Sendo necessário a data e hora das compras. 
+
 
  ### 5.MODELO CONCEITUAL<br>
         
@@ -84,12 +87,6 @@ Yasmin Santana: mamin8172@gmail.com<br>
     CIDADE: Tabela que armazena as informações relativas ao bairro
     codigo: Campo que armazena o número de identificação de cada cidade
     cidade: Campo que armazena a cidade de endereço
-
-
-
-
-
-
 
 
 ### 6	MODELO LÓGICO<br>
