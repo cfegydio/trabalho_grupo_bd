@@ -34,8 +34,8 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
  ### 5.MODELO CONCEITUAL<br>
         
-![Alt text](https://github.com/discipbd1/trab01/blob/master/images/concept_sample.png?raw=true "Modelo Conceitual")
-    
+![image](https://user-images.githubusercontent.com/91489199/198624522-25859660-1641-44f1-ae16-e8dc8bdbc172.png)
+
     
 #### 5.1 Validação do Modelo Conceitual
     [Grupo01]: Esther, Raynan, Sofia e Carlos Eduardo
@@ -89,14 +89,78 @@ Yasmin Santana: mamin8172@gmail.com<br>
     cidade: Campo que armazena a cidade de endereço
 
 
-### 6	MODELO LÓGICO<br>
-        a) inclusão do esquema lógico do banco de dados
-        b) verificação de correspondencia com o modelo conceitual 
-        (não serão aceitos modelos que não estejam em conformidade)
+### 6.	MODELO LÓGICO<br>
 
-### 7	MODELO FÍSICO<br>
-        a) inclusão das instruções de criacão das estruturas em SQL/DDL 
-        (criação de tabelas, alterações, etc..) 
+![image](https://user-images.githubusercontent.com/91489199/198627605-2063a83c-c244-4c5c-bb1b-2bbe697d0c3a.png)
+
+
+### 7.	MODELO FÍSICO<br>
+
+    CREATE TABLE PEDIDO (
+        codigo integer PRIMARY KEY,
+        data_hora timestamp,
+        FK_CLIENTE_codigo integer references CLIENTE(codigo),
+        FK_MOTOBOY_codigo integer references MOTOBOY(codigo),
+        FK_PRODUTO_codigo integer references PRODUTO(codigo),
+        FK_FORMA_PAGAMENTO_codigo integer references FORMA_PAGAMENTO(codigo),
+        FK_ENDERECO_codigo integer references ENDERECO(codigo)
+    );
+
+    CREATE TABLE PRODUTO (
+        codigo integer PRIMARY KEY,
+        nome varchar(25),
+        descricao varchar(200),
+        preco float
+    );
+
+    CREATE TABLE CLIENTE (
+        codigo integer PRIMARY KEY,
+        cpf varchar(14),
+        nome varchar(80)
+    );
+
+    CREATE TABLE MOTOBOY (
+        codigo integer PRIMARY KEY,
+        salario float,
+        placa_moto varchar(8),
+        cnh varchar(11),
+        nome varchar(80)
+    );
+
+    CREATE TABLE FORMA_PAGAMENTO (
+        codigo integer PRIMARY KEY,
+        forma varchar(20)
+    );
+
+    CREATE TABLE TELEFONE (
+        telefone integer PRIMARY KEY,
+        fk_CLIENTE_codigo integer references CLIENTE(codigo)
+    );
+
+     CREATE TABLE ENDERECO (
+         codigo integer PRIMARY KEY,
+         cep varchar(9),
+         numero integer,
+         logradouro varchar(80),
+         fk_TIPO_LOGRADOURO_codigo integer references TIPO_LOGRADOURO(codigo),
+         fk_BAIRRO_codigo integer references BAIRRO(codigo),
+         fk_CIDADE_codigo integer references CIDADE(codigo)
+     );
+
+     CREATE TABLE CIDADE (
+         codigo integer PRIMARY KEY,
+         cidade varchar(20)
+     );
+
+     CREATE TABLE BAIRRO (
+         codigo integer PRIMARY KEY,
+         bairro varchar(20)
+     );
+
+     CREATE TABLE TIPO_LOGRADOURO (
+         codigo integer PRIMARY KEY,
+         tipo varchar(20)
+     );
         
        
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
