@@ -65,6 +65,14 @@ Yasmin Santana: mamin8172@gmail.com<br>
     PEDIDO: Tabela que armazena as informações relativas ao pedido
     codigo: Campo que armazena o número de identificação de cada pedido
     data_hora: Campo que armazena a data e hora de cada pedido
+    
+    ENDERECO: Tabela que armazena as informações relativas ao endereço
+	   codigo: Campo que armazena o número de identificação de cada endereço
+   	cep: Campo que armazena o cep de cada endereço
+   	numero: Campo que armazena o número de cada endereço
+	   logradouro: Campo que armazena o logradouro de cada endereço
+	   complemento: Campo que armazena o complemento de cada endereço
+
 
 
 
