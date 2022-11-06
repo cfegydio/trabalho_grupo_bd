@@ -35,7 +35,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
  ### 5.MODELO CONCEITUAL<br>
         
-![image](https://user-images.githubusercontent.com/91489199/200148869-85c3e14f-a3d2-4c8a-a777-86aad7765799.png)
+![image](https://user-images.githubusercontent.com/91489199/200174301-e19d9065-6c9b-4c68-b484-f8bde7f49728.png)
 
     
 #### 5.1 Validação do Modelo Conceitual
@@ -95,7 +95,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 ### 6.	MODELO LÓGICO<br>
 
-![image](https://user-images.githubusercontent.com/91489199/198634349-8e24dec2-11d0-4894-bcb7-de25c13314a7.png)
+![image](https://user-images.githubusercontent.com/91489199/200174250-cd5ab1ce-7948-44fa-a63c-c031ccbecf4b.png)
 
 
 ### 7.	MODELO FÍSICO<br>
