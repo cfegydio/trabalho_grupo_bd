@@ -35,7 +35,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
  ### 5.MODELO CONCEITUAL<br>
         
-![image](https://user-images.githubusercontent.com/91489199/198624522-25859660-1641-44f1-ae16-e8dc8bdbc172.png)
+![image](https://user-images.githubusercontent.com/91489199/200148869-85c3e14f-a3d2-4c8a-a777-86aad7765799.png)
 
     
 #### 5.1 Validação do Modelo Conceitual
@@ -75,8 +75,11 @@ Yasmin Santana: mamin8172@gmail.com<br>
     cep: Campo que armazena o cep de cada endereço
     numero: Campo que armazena o número de cada endereço
     logradouro: Campo que armazena o logradouro de cada endereço
-    complemento: Campo que armazena o complemento de cada endereço
-
+    
+    COMPLEMENTO: Tabela que armazena as informações relativas ao complemento
+    codigo: Campo que armazena o número de identificação de cada complemento
+    complemento: Campo que armazena o complemento do endereço
+    
     TIPO_LOGRADOURO: Tabela que armazena as informações relativas ao tipo de logradouro
     codigo: Campo que armazena o número de identificação de cada logradouro
     tipo: Campo que armazena o tipo de logradouro do endereço
