@@ -135,10 +135,12 @@ CREATE TABLE CIDADE (
     codigo integer PRIMARY KEY,
     cidade varchar(20)
 );
+
 CREATE TABLE BAIRRO (
     codigo integer PRIMARY KEY,
     bairro varchar(20)
 );
+
 CREATE TABLE TIPO_LOGRADOURO (
     codigo integer PRIMARY KEY,
     tipo varchar(20)
@@ -146,8 +148,9 @@ CREATE TABLE TIPO_LOGRADOURO (
 
 CREATE TABLE COMPLEMENTO (
     codigo integer PRIMARY KEY,
-    complemento varchar(20)
+    complemento varchar(80)
 );
+
 CREATE TABLE ENDERECO (
     codigo integer PRIMARY KEY,
     cep varchar(9),
@@ -158,6 +161,7 @@ CREATE TABLE ENDERECO (
     fk_CIDADE_codigo integer references CIDADE(codigo),
     fk_COMPLEMENTO_codigo integer references COMPLEMENTO(codigo)
 ); 
+
 CREATE TABLE PEDIDO (
     codigo integer PRIMARY KEY,
     data_hora timestamp,
@@ -166,6 +170,7 @@ CREATE TABLE PEDIDO (
     FK_MOTOBOY_codigo integer references MOTOBOY(codigo),
     FK_ENDERECO_codigo integer references ENDERECO(codigo)
 );
+
 CREATE TABLE PEDIDO_PRODUTO (
     codigo primary key,
     qtd integer,
