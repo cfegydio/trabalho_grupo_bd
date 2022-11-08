@@ -35,7 +35,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
  ### 5.MODELO CONCEITUAL<br>
         
-![image](https://user-images.githubusercontent.com/91489199/200174301-e19d9065-6c9b-4c68-b484-f8bde7f49728.png)
+![image](https://user-images.githubusercontent.com/91489199/200624508-89958683-ee9c-4cce-9c9b-22874fcf4eca.png)
 
     
 #### 5.1 Validação do Modelo Conceitual
@@ -95,88 +95,88 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 ### 6.	MODELO LÓGICO<br>
 
-![image](https://user-images.githubusercontent.com/91489199/200174250-cd5ab1ce-7948-44fa-a63c-c031ccbecf4b.png)
+![image](https://user-images.githubusercontent.com/91489199/200624871-8f72e604-eaea-478c-87eb-3a108c1be5a6.png)
 
 
 ### 7.	MODELO FÍSICO<br>
-DROP TABLE CLIENTE, TELEFONE, MOTOBOY, PRODUTO, FORMA_PAGAMENTO, CIDADE, BAIRRO, TIPO_LOGRADOURO, COMPLEMENTO, ENDERECO, PEDIDO, PEDIDO_PRODUTO CASCADE;
+    DROP TABLE CLIENTE, TELEFONE, MOTOBOY, PRODUTO, FORMA_PAGAMENTO, CIDADE, BAIRRO, TIPO_LOGRADOURO, COMPLEMENTO, ENDERECO, PEDIDO, PEDIDO_PRODUTO CASCADE;
 
-CREATE TABLE CLIENTE (
-    codigo integer PRIMARY KEY,
-    cpf varchar(14),
-    nome varchar(80)
-);
+    CREATE TABLE CLIENTE (
+        codigo integer PRIMARY KEY,
+        cpf varchar(14),
+        nome varchar(80)
+    );
 
-CREATE TABLE TELEFONE (
-    telefone integer PRIMARY KEY,
-    fk_CLIENTE_codigo integer references CLIENTE(codigo)
-);
+    CREATE TABLE TELEFONE (
+        telefone integer PRIMARY KEY,
+        fk_CLIENTE_codigo integer references CLIENTE(codigo)
+    );
 
-CREATE TABLE MOTOBOY (
-    codigo integer PRIMARY KEY,
-    salario float,
-    placa_moto varchar(8),
-    cnh varchar(11),
-    nome varchar(80)
-);
-CREATE TABLE PRODUTO (
-    codigo integer PRIMARY KEY,
-    nome varchar(25),
-    descricao varchar(200),
-    preco float
-);
+    CREATE TABLE MOTOBOY (
+        codigo integer PRIMARY KEY,
+        salario float,
+        placa_moto varchar(8),
+        cnh varchar(11),
+        nome varchar(80)
+    );
+    CREATE TABLE PRODUTO (
+        codigo integer PRIMARY KEY,
+        nome varchar(25),
+        descricao varchar(200),
+        preco float
+    );
 
-CREATE TABLE FORMA_PAGAMENTO (
-    codigo integer PRIMARY KEY,
-    forma varchar(20)
-);
+    CREATE TABLE FORMA_PAGAMENTO (
+        codigo integer PRIMARY KEY,
+        forma varchar(20)
+    );
 
-CREATE TABLE CIDADE (
-    codigo integer PRIMARY KEY,
-    cidade varchar(20)
-);
+    CREATE TABLE CIDADE (
+        codigo integer PRIMARY KEY,
+        cidade varchar(20)
+    );
 
-CREATE TABLE BAIRRO (
-    codigo integer PRIMARY KEY,
-    bairro varchar(20)
-);
+    CREATE TABLE BAIRRO (
+        codigo integer PRIMARY KEY,
+        bairro varchar(20)
+    );
 
-CREATE TABLE TIPO_LOGRADOURO (
-    codigo integer PRIMARY KEY,
-    tipo varchar(20)
-);
+    CREATE TABLE TIPO_LOGRADOURO (
+        codigo integer PRIMARY KEY,
+        tipo varchar(20)
+    );
 
-CREATE TABLE COMPLEMENTO (
-    codigo integer PRIMARY KEY,
-    complemento varchar(80)
-);
+    CREATE TABLE COMPLEMENTO (
+        codigo integer PRIMARY KEY,
+        complemento varchar(80)
+    );
 
-CREATE TABLE ENDERECO (
-    codigo integer PRIMARY KEY,
-    cep varchar(9),
-    numero integer,
-    logradouro varchar(80),
-    fk_TIPO_LOGRADOURO_codigo integer references TIPO_LOGRADOURO(codigo),
-    fk_BAIRRO_codigo integer references BAIRRO(codigo),
-    fk_CIDADE_codigo integer references CIDADE(codigo),
-    fk_COMPLEMENTO_codigo integer references COMPLEMENTO(codigo)
-); 
+    CREATE TABLE ENDERECO (
+        codigo integer PRIMARY KEY,
+        cep varchar(9),
+        numero integer,
+        logradouro varchar(80),
+        fk_TIPO_LOGRADOURO_codigo integer references TIPO_LOGRADOURO(codigo),
+        fk_BAIRRO_codigo integer references BAIRRO(codigo),
+        fk_CIDADE_codigo integer references CIDADE(codigo),
+        fk_COMPLEMENTO_codigo integer references COMPLEMENTO(codigo)
+    ); 
 
-CREATE TABLE PEDIDO (
-    codigo integer PRIMARY KEY,
-    data_hora timestamp,
-    FK_FORMA_PAGAMENTO_codigo integer references FORMA_PAGAMENTO(codigo),
-    FK_CLIENTE_codigo integer references CLIENTE(codigo),
-    FK_MOTOBOY_codigo integer references MOTOBOY(codigo),
-    FK_ENDERECO_codigo integer references ENDERECO(codigo)
-);
+    CREATE TABLE PEDIDO (
+        codigo integer PRIMARY KEY,
+        data_hora timestamp,
+        FK_FORMA_PAGAMENTO_codigo integer references FORMA_PAGAMENTO(codigo),
+        FK_CLIENTE_codigo integer references CLIENTE(codigo),
+        FK_MOTOBOY_codigo integer references MOTOBOY(codigo),
+        FK_ENDERECO_codigo integer references ENDERECO(codigo)
+    );
 
-CREATE TABLE PEDIDO_PRODUTO (
-    codigo primary key,
-    qtd integer,
-    FK_PEDIDO_codigo integer references PEDIDO(codigo),
-    FK_PRODUTO_codigo integer references PRODUTO(codigo)
-);
+    CREATE TABLE PEDIDO_PRODUTO (
+        codigo primary key,
+        qtd integer,
+        FK_PEDIDO_codigo integer references PEDIDO(codigo),
+        FK_PRODUTO_codigo integer references PRODUTO(codigo)
+    );
 
 
         
