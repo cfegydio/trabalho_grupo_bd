@@ -99,282 +99,330 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 
 ### 7.	MODELO FÍSICO<br>
-    DROP TABLE CLIENTE, TELEFONE, MOTOBOY, PRODUTO, FORMA_PAGAMENTO, CIDADE, BAIRRO, TIPO_LOGRADOURO, COMPLEMENTO, ENDERECO, PEDIDO, PEDIDO_PRODUTO CASCADE;
+              DROP TABLE IF EXISTS CLIENTE, TELEFONE, MOTOBOY, PRODUTO, FORMA_PAGAMENTO, CIDADE, BAIRRO, TIPO_LOGRADOURO, COMPLEMENTO, ENDERECO, PEDIDO, PEDIDO_PRODUTO CASCADE;
 
-      CREATE TABLE CLIENTE (
-          codigo integer PRIMARY KEY,
-          cpf varchar(14),
-          nome varchar(80)
-      );
+          CREATE TABLE CLIENTE (
+              codigo integer PRIMARY KEY,
+              cpf varchar(14),
+              nome varchar(80)
+          );
 
-      CREATE TABLE TELEFONE (
-          telefone integer PRIMARY KEY,
-          fk_CLIENTE_codigo integer references CLIENTE(codigo)
-      );
+          CREATE TABLE TELEFONE (
+              telefone integer PRIMARY KEY,
+              fk_CLIENTE_codigo integer references CLIENTE(codigo)
+          );
 
-      CREATE TABLE MOTOBOY (
-          codigo integer PRIMARY KEY,
-          salario float,
-          placa_moto varchar(8),
-          cnh varchar(11),
-          nome varchar(80)
-      );
-      CREATE TABLE PRODUTO (
-          codigo integer PRIMARY KEY,
-          nome varchar(25),
-          descricao varchar(200),
-          preco float
-      );
+          CREATE TABLE MOTOBOY (
+              codigo integer PRIMARY KEY,
+              salario float,
+              placa_moto varchar(8),
+              cnh varchar(11),
+              nome varchar(80)
+          );
+          CREATE TABLE PRODUTO (
+              codigo integer PRIMARY KEY,
+              nome varchar(25),
+              descricao varchar(200),
+              preco float
+          );
 
-      CREATE TABLE FORMA_PAGAMENTO (
-          codigo integer PRIMARY KEY,
-          forma varchar(20)
-      );
+          CREATE TABLE FORMA_PAGAMENTO (
+              codigo integer PRIMARY KEY,
+              forma varchar(40)
+          );
 
-      CREATE TABLE CIDADE (
-          codigo integer PRIMARY KEY,
-          cidade varchar(20)
-      );
+          CREATE TABLE CIDADE (
+              codigo integer PRIMARY KEY,
+              cidade varchar(40)
+          );
 
-      CREATE TABLE BAIRRO (
-          codigo integer PRIMARY KEY,
-          bairro varchar(20)
-      );
+          CREATE TABLE BAIRRO (
+              codigo integer PRIMARY KEY,
+              bairro varchar(40)
+          );
 
-      CREATE TABLE TIPO_LOGRADOURO (
-          codigo integer PRIMARY KEY,
-          tipo varchar(20)
-      );
+          CREATE TABLE TIPO_LOGRADOURO (
+              codigo integer PRIMARY KEY,
+              tipo varchar(40)
+          );
 
-      CREATE TABLE COMPLEMENTO (
-          codigo integer PRIMARY KEY,
-          complemento varchar(80)
-      );
+          CREATE TABLE COMPLEMENTO (
+              codigo integer PRIMARY KEY,
+              complemento varchar(80)
+          );
 
-      CREATE TABLE ENDERECO (
-          codigo integer PRIMARY KEY,
-          cep varchar(9),
-          numero integer,
-          logradouro varchar(80),
-          fk_TIPO_LOGRADOURO_codigo integer references TIPO_LOGRADOURO(codigo),
-          fk_BAIRRO_codigo integer references BAIRRO(codigo),
-          fk_CIDADE_codigo integer references CIDADE(codigo),
-          fk_COMPLEMENTO_codigo integer references COMPLEMENTO(codigo)
-      ); 
+          CREATE TABLE ENDERECO (
+              codigo integer PRIMARY KEY,
+              cep varchar(9),
+              numero integer,
+              logradouro varchar(80),
+              fk_TIPO_LOGRADOURO_codigo integer references TIPO_LOGRADOURO(codigo),
+              fk_BAIRRO_codigo integer references BAIRRO(codigo),
+              fk_CIDADE_codigo integer references CIDADE(codigo),
+              fk_COMPLEMENTO_codigo integer references COMPLEMENTO(codigo)
+          );
 
-      CREATE TABLE PEDIDO (
-          codigo integer PRIMARY KEY,
-          data_hora timestamp,
-          FK_FORMA_PAGAMENTO_codigo integer references FORMA_PAGAMENTO(codigo),
-          FK_CLIENTE_codigo integer references CLIENTE(codigo),
-          FK_MOTOBOY_codigo integer references MOTOBOY(codigo),
-          FK_ENDERECO_codigo integer references ENDERECO(codigo)
-      );
+          CREATE TABLE PEDIDO (
+              codigo integer PRIMARY KEY,
+              data_hora timestamp,
+              FK_FORMA_PAGAMENTO_codigo integer references FORMA_PAGAMENTO(codigo),
+              FK_CLIENTE_codigo integer references CLIENTE(codigo),
+              FK_MOTOBOY_codigo integer references MOTOBOY(codigo),
+              FK_ENDERECO_codigo integer references ENDERECO(codigo)
+          );
 
-      CREATE TABLE PEDIDO_PRODUTO (
-          codigo integer primary key,
-          qtd integer,
-          FK_PEDIDO_codigo integer references PEDIDO(codigo),
-          FK_PRODUTO_codigo integer references PRODUTO(codigo)
-      );
+          CREATE TABLE PEDIDO_PRODUTO (
+              qtd integer,
+              FK_PEDIDO_codigo integer references PEDIDO(codigo),
+              FK_PRODUTO_codigo integer references PRODUTO(codigo)
+          );
+
         
        
 ### 8. INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
-    INSERT INTO PRODUTO(codigo, nome, descricao, preco) VALUES
-    (1, 'Fatia Nutellaja', 'Uma deliciosa fatia de  bolo com massa de bolo branco, recheio de nutella e brigadeiro de maracujá', 12.0),
-    (2, 'Fatia Moraninho', 'Uma deliciosa fatia de  bolo com massa de bolo branco, recheio de morango e brigadeiro de ninho', 12.0),
-    (3, 'Fatia Choconinho', 'Uma deliciosa fatia de  bolo com massa de bolo branco, recheio de brigadeiro tradicional e  brigadeiro de ninho', 12.0),
-    (4, 'Fatia Chocolate', 'Uma deliciosa fatia de  bolo com massa de bolo branco com  recheio de brigadeiro tradicional', 12.0),
-    (5, 'Fatia Red velvet', 'Uma deliciosa fatia de  bolo com massa de bolo vermelho recheio de brigadeiro branco e  brigadeiro de ninho', 12.0),
-    (6,  'Bolo Candy Milk', 'Um delicioso bolo de mesa servindo 30 pessoas, com massa branca, recheio de doce de leite e doce de coco.', 120.0),
-    (7, 'Bolo Abachoco', 'Um delicioso bolo de mesa servindo 30 pessoas, com massa branca, recheio de doce de leite e doce de coco.', 120.0),
-    (8, 'Bolo Laranja', 'Um delicioso bolo de mesa servindo 30 pessoas, com massa de laranja, recheio de limão  e brigadeiro de ninho.', 120.0),
-    (9, 'Bolo Vermelho', 'Um delicioso bolo de mesa servindo 30 pessoas, com massa branca, recheio de geleia de frutas vermelhas  e brigadeiro de framboesa.', 120.0),
-    (10, 'Bolo Ferrero', 'Um delicioso bolo de mesa servindo 30 pessoas, com massa de chocolate, recheio de brigadeiro de ferrero rocher e brigadeiro de amendoim.', 120.0),
-    (11, 'Brownie Simples', 'Um delicioso pedaço de brownie que derrete na sua boca.', 8.0),
-    (12, 'Brownie Nutella', 'Um delicioso pedaço de brownie que derrete na sua boca com cobertura de Nutella', 9.0),
-    (13, 'Churros Doce de Leite', 'Um maravilhoso churros quentinho recheado de nosso delicioso doce de leite', 7.0),
-    (14, 'Churros Chocolate', 'Um maravilhoso churros quentinho recheado de nosso delicioso chocolate', 7.0),
-    (15, 'Churros Nutella', 'Um maravilhoso churros quentinho recheado de nutella', 7.0);
+    
+       INSERT INTO PRODUTO(codigo, nome, descricao, preco) VALUES
+       (1, 'Fatia Nutellaja', 'Uma deliciosa fatia de  bolo com massa de bolo branco, recheio de nutella e brigadeiro de maracujá', 12.0),
+       (2, 'Fatia Moraninho', 'Uma deliciosa fatia de  bolo com massa de bolo branco, recheio de morango e brigadeiro de ninho', 12.0),
+       (3, 'Fatia Choconinho', 'Uma deliciosa fatia de  bolo com massa de bolo branco, recheio de brigadeiro tradicional e  brigadeiro de ninho', 12.0),
+       (4, 'Fatia Chocolate', 'Uma deliciosa fatia de  bolo com massa de bolo branco com  recheio de brigadeiro tradicional', 12.0),
+       (5, 'Fatia Red velvet', 'Uma deliciosa fatia de  bolo com massa de bolo vermelho recheio de brigadeiro branco e  brigadeiro de ninho', 12.0),
+       (6,  'Bolo Candy Milk', 'Um delicioso bolo de mesa servindo 30 pessoas, com massa branca, recheio de doce de leite e doce de coco.', 120.0),
+       (7, 'Bolo Abachoco', 'Um delicioso bolo de mesa servindo 30 pessoas, com massa branca, recheio de doce de leite e doce de coco.', 120.0),
+       (8, 'Bolo Laranja', 'Um delicioso bolo de mesa servindo 30 pessoas, com massa de laranja, recheio de limão  e brigadeiro de ninho.', 120.0),
+       (9, 'Bolo Vermelho', 'Um delicioso bolo de mesa servindo 30 pessoas, com massa branca, recheio de geleia de frutas vermelhas  e brigadeiro de framboesa.', 120.0),
+       (10, 'Bolo Ferrero', 'Um delicioso bolo de mesa servindo 30 pessoas, com massa de chocolate, recheio de brigadeiro de ferrero rocher e brigadeiro de amendoim.', 120.0),
+       (11, 'Brownie Simples', 'Um delicioso pedaço de brownie que derrete na sua boca.', 8.0),
+       (12, 'Brownie Nutella', 'Um delicioso pedaço de brownie que derrete na sua boca com cobertura de Nutella', 9.0),
+       (13, 'Churros Doce de Leite', 'Um maravilhoso churros quentinho recheado de nosso delicioso doce de leite', 7.0),
+       (14, 'Churros Chocolate', 'Um maravilhoso churros quentinho recheado de nosso delicioso chocolate', 7.0),
+       (15, 'Churros Nutella', 'Um maravilhoso churros quentinho recheado de nutella', 7.0);
 
-    INSERT INTO CLIENTE(codigo, cpf, nome) values
-    (10, '111.111.111-11', 'Lorena Toraes'),
-    (20, '222.222.222-22', 'Kauã Terra'),
-    (30, '333.333.333-33', 'Esther Moraes'),
-    (40, '444.444.444-44', 'Sofia Salles'),
-    (50, '555.555.555-55', 'Davi Salles'),
-    (60, '666.666.666-66', 'Raynan Moraes'),
-    (70, '777.777.777-77', 'Carlos Eduardo'),
-    (80, '888.888.888-88', 'Harian Adami'),
-    (90, '999.999.999-99', 'Mayana Teixeira'),
-    (100, '100.100.100-00', 'Valentina Teixeira'),
-    (110, '110.110.110-10', 'Camila Egydio'),
-    (120, '120.120.120-12', 'Isabelly Balestrassi'),
-    (130, '130.130.130-13', 'Davi Nunes'),
-    (140, '140.140.140-14', 'Yasmin Santana');
+       INSERT INTO CLIENTE(codigo, cpf, nome) values
+       (10, '111.111.111-11', 'Lorena Toraes'),
+       (20, '222.222.222-22', 'Kauã Terra'),
+       (30, '333.333.333-33', 'Esther Moraes'),
+       (40, '444.444.444-44', 'Sofia Salles'),
+       (50, '555.555.555-55', 'Davi Salles'),
+       (60, '666.666.666-66', 'Raynan Moraes'),
+       (70, '777.777.777-77', 'Carlos Eduardo'),
+       (80, '888.888.888-88', 'Harian Adami'),
+       (90, '999.999.999-99', 'Mayana Teixeira'),
+       (100, '100.100.100-00', 'Valentina Teixeira'),
+       (110, '110.110.110-10', 'Camila Egydio'),
+       (120, '120.120.120-12', 'Isabelly Balestrassi'),
+       (130, '130.130.130-13', 'Davi Nunes'),
+       (140, '140.140.140-14', 'Yasmin Santana');
 
-    INSERT INTO TELEFONE(telefone, fk_cliente_codigo) values
-    (111111111, 10),
-    (222222222, 20),
-    (202020202,20),
-    (333333333,30),
-    (303030303,30),
-    (444444444,40),
-    (404040404,40),
-    (555555555,50),
-    (666666666,60),
-    (777777777,70),
-    (888888888,80),
-    (999999999,90),
-    (101010101,100),
-    (110110110,110),
-    (120120120,120),
-    (130130130,130),
-    (140140140, 140);
+       INSERT INTO TELEFONE(telefone, fk_cliente_codigo) values
+       (111111111, 10),
+       (222222222, 20),
+       (202020202,20),
+       (333333333,30),
+       (303030303,30),
+       (444444444,40),
+       (404040404,40),
+       (555555555,50),
+       (666666666,60),
+       (777777777,70),
+       (888888888,80),
+       (999999999,90),
+       (101010101,100),
+       (110110110,110),
+       (120120120,120),
+       (130130130,130),
+       (140140140, 140);
 
-    INSERT INTO MOTOBOY(codigo, salario, placa_moto, cnh, nome) values
-    (100, 4000.0, '111-abcd', 11111111111, 'Gabriel Frinhani'),
-    (200, 2000.0, '222-abcd', 22222222222, 'Raíssa Dias'),
-    (300, 1100.0, '333-abcd', 33333333333, 'Liz Dias'),
-    (400, 1100.0, '444-abcd', 44444444444, 'Matheus Frinhani'),
-    (500, 1100.0, '555-abcd', 55555555555, 'Rafael Frinhani'),
-    (600, 1100.0, '666-abcd', 66666666666, 'Eduardo Olmo'),
-    (700, 1100.0, '777-abcd', 77777777777, 'Paulo Cezari'),
-    (800, 1100.0, '888-abcd', 88888888888, 'Mariana Lopesi'),
-    (900, 1100.0, '999-abcd', 99999999999, 'Illana Cardoso'),
-    (110, 1100.0, '110-abcd', 10101010101, 'Nicolle Nunes');
+       INSERT INTO MOTOBOY(codigo, salario, placa_moto, cnh, nome) values
+       (100, 5000.0, '111-abcd', 11111111111, 'Gabriel Frinhani'),
+       (200, 4000.0, '222-abcd', 22222222222, 'Raíssa Dias'),
+       (300, 600.0, '333-abcd', 33333333333, 'Liz Dias'),
+       (400, 600.0, '444-abcd', 44444444444, 'Matheus Frinhani'),
+       (500, 600.0, '555-abcd', 55555555555, 'Rafael Frinhani'),
+       (600, 3000.0, '666-abcd', 66666666666, 'Eduardo Olmo'),
+       (700, 3000.0, '777-abcd', 77777777777, 'Paulo Cezari'),
+       (800, 4000.0, '888-abcd', 88888888888, 'Mariana Lopes'),
+       (900, 2000.0, '999-abcd', 99999999999, 'Illana Cardoso'),
+       (110, 5000.0, '110-abcd', 10101010101, 'Nicolle Nunes');
 
-    INSERT INTO BAIRRO (codigo, bairro) VALUES 
-    (1, 'Barcelona'),
-    (2, 'Praia do Canto'),
-    (3, 'Jardim Camburi'),
-    (4, 'Jardim da Penha'),
-    (5, 'Enseada do Suá'),
-    (6, 'Boa Vista'),
-    (7, 'Bairro de Fátima'),
-    (8, 'Jacaraípe'),
-    (9, 'Manoel Plaza'),
-    (10, 'Hélio Ferraz'),
-    (11, 'Eurico Salles'),
-    (12, 'Vista da Serra I'),
-    (13, 'Morada de Laranjeiras'),
-    (14, 'Jucutuquara');
+       INSERT INTO BAIRRO (codigo, bairro) VALUES
+       (1, 'Barcelona'),
+       (2, 'Praia do Canto'),
+       (3, 'Jardim Camburi'),
+       (4, 'Jardim da Penha'),
+       (5, 'Enseada do Suá'),
+       (6, 'Boa Vista'),
+       (7, 'Bairro de Fátima'),
+       (8, 'Jacaraípe'),
+       (9, 'Manoel Plaza'),
+       (10, 'Hélio Ferraz'),
+       (11, 'Eurico Salles'),
+       (12, 'Vista da Serra I'),
+       (13, 'Morada de Laranjeiras'),
+       (14, 'Jucutuquara');
 
-    INSERT INTO CIDADE (codigo, cidade) VALUES 
-    (1, 'Vitória'),
-    (2, 'Serra');
+       INSERT INTO CIDADE (codigo, cidade) VALUES
+       (1, 'Vitória'),
+       (2, 'Serra');
 
-    INSERT INTO TIPO_LOGRADOURO (codigo, tipo) VALUES
-    (1, 'Aeroporto'),
-    (2, 'Alameda'),
-    (3, 'Área'),
-    (4, 'Avenida'),
-    (5, 'Campo'),
-    (6, 'Chácara'),
-    (7, 'Colônia'),
-    (8, 'Condomínio'),
-    (9, 'Conjunto'),
-    (10, 'Distrito'),
-    (11, 'Esplanada'),
-    (12, 'Estação'),
-    (13, 'Estrada'),
-    (14, 'Favela'),
-    (15, 'Fazenda'),
-    (16, 'Feira'),
-    (17, 'Jardim'),
-    (18, 'Ladeira'),
-    (19, 'Lago'),
-    (20, 'Lagoa'),
-    (21, 'Largo'),
-    (22, 'Loteamento'),
-    (23, 'Morro'),
-    (24, 'Núcleo'),
-    (25, 'Parque'),
-    (26, 'Passarela'),
-    (27, 'Pátio'),
-    (28, 'Praça'),
-    (29, 'Quadra'),
-    (30, 'Recanto'),
-    (31, 'Residencial'),
-    (32, 'Rodovia'),
-    (33, 'Rua'),
-    (34, 'Setor'),
-    (35, 'Sítio'),
-    (36, 'Travessa'),
-    (37, 'Trecho'),
-    (38, 'Trevo'),
-    (39, 'Vale'),
-    (40, 'Vereda'),
-    (41, 'Via'),
-    (42, 'Viaduto'),
-    (43, 'Viela'),
-    (44, 'Vila');
+       INSERT INTO TIPO_LOGRADOURO (codigo, tipo) VALUES
+       (1, 'Aeroporto'),
+       (2, 'Alameda'),
+       (3, 'Área'),
+       (4, 'Avenida'),
+       (5, 'Campo'),
+       (6, 'Chácara'),
+       (7, 'Colônia'),
+       (8, 'Condomínio'),
+       (9, 'Conjunto'),
+       (10, 'Distrito'),
+       (11, 'Esplanada'),
+       (12, 'Estação'),
+       (13, 'Estrada'),
+       (14, 'Favela'),
+       (15, 'Fazenda'),
+       (16, 'Feira'),
+       (17, 'Jardim'),
+       (18, 'Ladeira'),
+       (19, 'Lago'),
+       (20, 'Lagoa'),
+       (21, 'Largo'),
+       (22, 'Loteamento'),
+       (23, 'Morro'),
+       (24, 'Núcleo'),
+       (25, 'Parque'),
+       (26, 'Passarela'),
+       (27, 'Pátio'),
+       (28, 'Praça'),
+       (29, 'Quadra'),
+       (30, 'Recanto'),
+       (31, 'Residencial'),
+       (32, 'Rodovia'),
+       (33, 'Rua'),
+       (34, 'Setor'),
+       (35, 'Sítio'),
+       (36, 'Travessa'),
+       (37, 'Trecho'),
+       (38, 'Trevo'),
+       (39, 'Vale'),
+       (40, 'Vereda'),
+       (41, 'Via'),
+       (42, 'Viaduto'),
+       (43, 'Viela'),
+       (44, 'Vila');
 
-    INSERT INTO ENDERECO (codigo, cep, numero, logradouro, fk_tipo_logradouro_codigo, fk_bairro_codigo, fk_cidade_codigo) VALUES
-    (1, '29160-161', 300, 'João Palácio', 4, 11, 2),
-    (2, '29160-596', 110, 'Rachel Vitalino de Brito', 33, 10, 2),
-    (3, '29090-160', 400, 'José Maria Vivácqua Santos', 4, 3, 1),
-    (4, '29050-902', 200, 'Américo Buaiz', 4, 5, 1),
-    (5, '29176-360', 30, 'Presidente Kennedy', 4, 12, 2),
-    (6, '29166-630', 330, 'dos Sabiás', 4, 13, 2),
-    (7, '29040-780', 1729, 'Vitória', 4, 14, 1),
-    (8, '29160-781', 576, 'Mário Batalha', 4, 7, 2),
-    (9, '29090-720', 425, 'Judith Leão Castello Ribeiro', 4, 3, 1),
-    (10, '29090-370', 500, 'Italina Pereira Mota', 33, 3, 1),
-    (11, '29090-370', 720, 'José Maria Vivácqua Santos', 4, 3, 1),
-    (12, '29160-521', 27, 'Rio Tocantins', 33, 10, 2);
+       insert into COMPLEMENTO(codigo, complemento) values
+        (1, 'Apartamento 202'),
+        (2, 'Próximo ao supermercado'),
+        (3, 'Apartamento 404'),
+        (4, 'Na frente do posto de gasolina'),
+        (5, 'Casa roxa de esquina'),
+        (6, 'Descendo a maçonaria'),
+        (7, 'Portão preto com bandeira da copa'),
+        (8, 'Apartamento 606'),
+        (9, '');
 
-    INSERT INTO FORMA_PAGAMENTO(codigo, forma) VALUES
-    (1, 'Pix'),
-    (2, 'Dinheiro'),
-    (3, 'Cartão de Crédito'),
-    (4, 'Cartão de Débito'),
-    (5, 'Cheque');
+       INSERT INTO ENDERECO (codigo, cep, numero, logradouro, fk_tipo_logradouro_codigo, fk_bairro_codigo, fk_cidade_codigo) VALUES
+       (1, '29160-161', 300, 'João Palácio', 4, 11, 2),
+       (2, '29160-596', 110, 'Rachel Vitalino de Brito', 33, 10, 2),
+       (3, '29090-160', 400, 'José Maria Vivácqua Santos', 4, 3, 1),
+       (4, '29050-902', 200, 'Américo Buaiz', 4, 5, 1),
+       (5, '29176-360', 30, 'Presidente Kennedy', 4, 12, 2),
+       (6, '29166-630', 330, 'dos Sabiás', 4, 13, 2),
+       (7, '29040-780', 1729, 'Vitória', 4, 14, 1),
+       (8, '29160-781', 576, 'Mário Batalha', 4, 7, 2),
+       (9, '29090-720', 425, 'Judith Leão Castello Ribeiro', 4, 3, 1),
+       (10, '29090-370', 500, 'Italina Pereira Mota', 33, 3, 1),
+       (11, '29090-370', 720, 'José Maria Vivácqua Santos', 4, 3, 1),
+       (12, '29160-521', 27, 'Rio Tocantins', 33, 10, 2);
 
-    INSERT INTO PEDIDO (codigo, data_hora, fk_forma_pagamento_codigo, fk_cliente_codigo, fk_produto_codigo, fk_motoboy_codigo, fk_endereco_codigo) VALUES
-    (110, '2022-10-28 10:59', 1, 10, 1, 100, 1),
-    (111, '2022-10-28 11:00', 1, 10, 15, 100, 1),
-    (112, '2022-10-27 12:00', 5, 140, 2, 200, 12),
-    (113, '2022-10-10 14:21', 3, 30, 4, 110, 5),
-    (114, '2022-09-30 15:30', 1, 100, 10, 200, 3),
-    (115, '2022-10-01 13:13', 1, 10, 9, 100, 1),
-    (116, '2022-10-01 14:09', 2, 20, 2, 300, 4),
-    (117, '2022-10-03 12:00', 4, 110, 7, 900, 7),
-    (118, '2022-09-20 16:22', 3, 80, 7, 110, 8),
-    (119, '2022-09-13 17:19', 3, 30, 3, 700, 5),
-    (120, '2022-10-25 18:02', 2, 70, 14, 700, 6),
-    (121, '2022-10-26 19:55', 4, 110, 12, 700, 7),
-    (122, '2022-10-25 12:37', 1, 100, 9, 100, 1),
-    (123, '2022-09-10 19:12', 5, 40, 4, 110, 9),
-    (124, '2022-09-10 19:00', 2, 20, 13, 200, 4),
-    (125, '2022-10-10 13:11', 1, 50, 5, 300, 10),
-    (126, '2022-10-11 14:00', 1, 50, 1, 500, 10),
-    (127, '2022-10-01 12:53', 5, 140, 8, 300, 12),
-    (128, '2022-09-28 11:53', 1, 50, 2, 600, 10),
-    (129, '2022-09-13 17:11', 4, 60, 6, 400, 11),
-    (130, '2022-09-13 13:12', 5, 40, 9, 100, 9),
-    (131, '2022-10-28 14:21', 2, 20, 1, 800, 1),
-    (132, '2022-10-28 14:21', 3, 80, 11, 800, 1),
-    (133, '2022-10-25 15:11', 2, 70, 7, 400, 6),
-    (134, '2022-10-23 13:22', 2, 70, 13, 300, 6),
-    (135, '2022-10-11 11:11', 1, 10, 10, 800, 1),
-    (136, '2022-09-12 12:34', 3, 80, 8, 110, 8),
-    (137, '2022-10-13 13:46', 1, 130, 15, 200, 2),
-    (138, '2022-10-13 15:32', 1, 50, 2, 300, 10),
-    (139, '2022-09-09 19:20', 3, 90, 9, 100, 1),
-    (140, '2022-09-10 14:21', 2, 70, 10, 800, 6),
-    (141, '2022-10-09 13:01', 1, 100, 10, 900, 3),
-    (142, '2022-10-09 14:22', 1, 10, 3, 500, 1),
-    (143, '2022-10-08 13:59', 2, 110, 11, 110, 7),
-    (144, '2022-10-08 18:47', 3, 30, 5, 110, 5),
-    (145, '2022-10-09 20:12', 2, 70, 8, 100, 6),
-    (146, '2022-10-08 16:03', 4, 120, 10, 800, 11),
-    (147, '2022-10-08 19:33', 4, 120, 12, 200, 11),
-    (148, '2022-09-30 17:43', 1, 30, 8, 400, 8),
-    (149, '2022-10-01 11:20', 1, 130, 1, 500, 2),
-    (150, '2022-10-02 12:00', 1, 130, 13, 300, 2),
-    (151, '2022-10-03 13:30', 2, 140, 14, 110, 12),
-    (152, '2022-10-03 13:31', 2, 20, 15, 110, 12);
+       INSERT INTO FORMA_PAGAMENTO(codigo, forma) VALUES
+       (1, 'Pix'),
+       (2, 'Dinheiro'),
+       (3, 'Cartão de Crédito'),
+       (4, 'Cartão de Débito'),
+       (5, 'Cheque');
+
+       INSERT INTO PEDIDO (codigo, data_hora, fk_forma_pagamento_codigo, fk_cliente_codigo, fk_motoboy_codigo, fk_endereco_codigo) VALUES
+       (110, '2022-10-28 10:59', 1, 10, 100, 1),
+       (111, '2022-10-27 12:00', 5, 140, 200, 12),
+       (112, '2022-10-10 14:21', 3, 30, 110, 5),
+       (113, '2022-09-30 15:30', 1, 100, 200, 3),
+       (114, '2022-10-01 13:13', 1, 10, 100, 1),
+       (115, '2022-10-01 14:09', 2, 20, 300, 4),
+       (116, '2022-10-03 12:00', 4, 110, 900, 7),
+       (117, '2022-09-20 16:22', 3, 80, 110, 8),
+       (118, '2022-09-13 17:19', 3, 30, 700, 5),
+       (119, '2022-10-25 18:02', 2, 70, 700, 6),
+       (120, '2022-10-26 19:55', 4, 110, 700, 7),
+       (121, '2022-10-25 12:37', 1, 100, 100, 1),
+       (122, '2022-09-10 19:12', 5, 40, 110, 9),
+       (123, '2022-10-10 13:11', 1, 50, 300, 10),
+       (124, '2022-10-11 14:00', 1, 50, 500, 10),
+       (125, '2022-10-01 12:53', 5, 140, 300, 12),
+       (126, '2022-09-28 11:53', 1, 50, 600, 10),
+       (127, '2022-09-13 17:11', 4, 60, 400, 11),
+       (129, '2022-09-13 13:12', 5, 40, 100, 9),
+       (130, '2022-10-28 14:21', 2, 20, 800, 1),--2
+       (131, '2022-10-25 15:11', 2, 70, 400, 6),
+       (132, '2022-10-23 13:22', 2, 70, 300, 6),
+       (133, '2022-10-11 11:11', 1, 10, 800, 1),
+       (134, '2022-09-12 12:34', 3, 80, 110, 8),
+       (135, '2022-10-13 13:46', 1, 130, 200, 2),
+       (136, '2022-09-09 19:20', 3, 90, 100, 1),
+       (137, '2022-09-10 14:21', 2, 70, 800, 6),
+       (139, '2022-10-09 13:01', 1, 100, 900, 3),
+       (140, '2022-10-09 14:22', 1, 10, 500, 1),
+       (141, '2022-10-08 13:59', 2, 110, 110, 7),
+       (142, '2022-10-09 20:12', 2, 70, 100, 6),
+       (143, '2022-10-08 16:03', 4, 120, 800, 11),
+       (144, '2022-09-30 17:43', 1, 30, 400, 8),
+       (145, '2022-10-01 11:20', 1, 130, 500, 2),
+       (146, '2022-10-02 12:00', 1, 130, 300, 2),
+       (147, '2022-10-03 13:30', 2, 140, 110, 12);
+
+
+       INSERT INTO PEDIDO_PRODUTO(FK_PEDIDO_codigo, fk_produto_codigo, qtd) VALUES
+       (110, 1, 3),
+       (110, 10, 2),
+       (111, 2, 1),
+       (112, 3, 2),
+       (113, 4, 1),
+       (114, 5, 1),
+       (115, 6, 5),
+       (116, 7, 5),
+       (117, 8, 4),
+       (118, 9, 2),
+       (119, 10, 1),
+       (120, 11, 7),
+       (121, 12, 2),
+       (121, 6, 3),
+       (122, 13, 4),
+       (123, 14, 1),
+       (124, 15, 1),
+       (125, 1, 2),
+       (126, 1, 3),
+       (127, 1, 2),
+       (129, 3, 4),
+       (130, 3, 10),
+       (131, 4, 3),
+       (132, 4, 2),
+       (133, 10, 2),
+       (134, 10, 2),
+       (135, 10,1),
+       (136, 10, 1),
+       (137, 12, 1),
+       (139, 13, 1),
+       (140, 12,1),
+       (141, 13,1),
+       (142, 14, 4),
+       (143, 7, 2),
+       (144, 7, 3),
+       (145, 9, 2),
+       (146, 9, 2),
+       (147, 5, 4);
+
+
 
 
 
