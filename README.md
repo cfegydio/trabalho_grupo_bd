@@ -322,19 +322,19 @@ Yasmin Santana: mamin8172@gmail.com<br>
         (8, 'Apartamento 606'),
         (9, '');
 
-       INSERT INTO ENDERECO (codigo, cep, numero, logradouro, fk_tipo_logradouro_codigo, fk_bairro_codigo, fk_cidade_codigo) VALUES
-       (1, '29160-161', 300, 'João Palácio', 4, 11, 2),
-       (2, '29160-596', 110, 'Rachel Vitalino de Brito', 33, 10, 2),
-       (3, '29090-160', 400, 'José Maria Vivácqua Santos', 4, 3, 1),
-       (4, '29050-902', 200, 'Américo Buaiz', 4, 5, 1),
-       (5, '29176-360', 30, 'Presidente Kennedy', 4, 12, 2),
-       (6, '29166-630', 330, 'dos Sabiás', 4, 13, 2),
-       (7, '29040-780', 1729, 'Vitória', 4, 14, 1),
-       (8, '29160-781', 576, 'Mário Batalha', 4, 7, 2),
-       (9, '29090-720', 425, 'Judith Leão Castello Ribeiro', 4, 3, 1),
-       (10, '29090-370', 500, 'Italina Pereira Mota', 33, 3, 1),
-       (11, '29090-370', 720, 'José Maria Vivácqua Santos', 4, 3, 1),
-       (12, '29160-521', 27, 'Rio Tocantins', 33, 10, 2);
+       INSERT INTO ENDERECO (codigo, cep, numero, logradouro, fk_tipo_logradouro_codigo, fk_bairro_codigo, fk_cidade_codigo, fk_complemento_codigo) VALUES
+       (1, '29160-161', 300, 'João Palácio', 4, 11, 2,1),
+       (2, '29160-596', 110, 'Rachel Vitalino de Brito', 33, 10, 2,2),
+       (3, '29090-160', 400, 'José Maria Vivácqua Santos', 4, 3, 1,3),
+       (4, '29050-902', 200, 'Américo Buaiz', 4, 5, 1,9),
+       (5, '29176-360', 30, 'Presidente Kennedy', 4, 12, 2,4),
+       (6, '29166-630', 330, 'dos Sabiás', 4, 13, 2,5),
+       (7, '29040-780', 1729, 'Vitória', 4, 14, 1,6),
+       (8, '29160-781', 576, 'Mário Batalha', 4, 7, 2,9),
+       (9, '29090-720', 425, 'Judith Leão Castello Ribeiro', 4, 3, 1,7),
+       (10, '29090-370', 500, 'Italina Pereira Mota', 33, 3, 1,8),
+       (11, '29090-370', 720, 'José Maria Vivácqua Santos', 4, 3, 1,9),
+       (12, '29160-521', 27, 'Rio Tocantins', 33, 10, 2,4);
 
        INSERT INTO FORMA_PAGAMENTO(codigo, forma) VALUES
        (1, 'Pix'),
