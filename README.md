@@ -528,7 +528,62 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 #### 9.6	CONSULTAS COM INNER JOIN E ORDER BY (Mínimo 6)<br>
     a) Uma junção que envolva todas as tabelas possuindo no mínimo 2 registros no resultado
+            –1) Relatório com informações a mais sobre o pedido
+            select cliente.nome as "Nome do cliente", telefone.telefone as "Telefone do cliente",
+            pedido.codigo as "Código do pedido", endereco.logradouro as "Logradouro",
+            forma_pagamento.forma as "Forma de pagamento", motoboy.nome as "Nome do motoboy",
+            pedido_produto.qtd as "Quantidade de produtos no pedido",
+            produto.nome as "Nome do produto", (produto.preco *pedido_produto.qtd) as "Valor total do pedido"
+            from cliente inner join telefone
+            on (cliente.codigo = telefone.fk_CLIENTE_codigo)inner join pedido
+            on (pedido.fk_cliente_codigo = cliente.codigo)inner join endereco
+            on (pedido.fk_endereco_codigo =  endereco.codigo) inner join forma_pagamento
+            on (forma_pagamento.codigo = pedido.fk_forma_pagamento_codigo) inner join motoboy
+            on (pedido.fk_motoboy_codigo = motoboy.codigo) inner join pedido_produto
+            on (pedido_produto.FK_pedido_codigo = pedido.codigo ) inner join produto
+            on (pedido_produto.FK_produto_codigo = produto.codigo)
+            order by cliente.nome;
+
     b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
+           –2) Quantidade de telefone por cliente
+           select cliente.nome, count(telefone.telefone) as qtd_tel_cliente from cliente
+           inner join telefone on(cliente.codigo = telefone.fk_CLIENTE_codigo)
+           group by cliente.nome
+           order by cliente.nome;
+
+           –3) Valor total de cada pedido que o cliente já fez
+           select cliente.nome as "Nome do cliente",
+           (pedido_produto.qtd * produto.preco) as "Valor por pedido",
+           produto.nome as "Nome do produto"
+           from cliente
+           inner join pedido on (cliente.codigo = pedido.fk_cliente_codigo)
+           inner join pedido_produto on (pedido.codigo = pedido_produto.fk_pedido_codigo)
+           inner join produto on (pedido_produto.fk_produto_codigo = produto.codigo)
+           order by cliente.nome
+
+           –4) Códigos dos pedidos realizados pelos motoboys
+           select motoboy.nome as "Nome do motoboy",
+           pedido.fk_motoboy_codigo as "Códigos das entregas que realizadas"
+           from motoboy inner join pedido on
+           (motoboy.codigo = pedido.fk_motoboy_codigo)
+           order by motoboy.nome
+
+           –5) Forma de pagamento escolhida a cada pedido feito pelo cliente 
+           select forma_pagamento.forma as "Formas de pagamento escolhida",
+           pedido.codigo as "Código do pedido",
+           cliente.nome as "Nome do cliente"
+           from forma_pagamento inner join pedido on
+           (forma_pagamento.codigo = pedido.fk_forma_pagamento_codigo) inner join
+           cliente on (pedido.fk_cliente_codigo = cliente.codigo)
+           order by cliente.nome
+
+           –6) Logradouro do endereço, tipo de logradouro e seu respectivo complemento
+           select endereco.logradouro as "Logradouro",
+           TIPO_LOGRADOURO.tipo as "Tipo do logradouro", complemento.complemento as "Complemento logradouro" from endereco
+           inner join complemento on (endereco.fk_complemento_codigo = complemento.codigo)
+           inner join TIPO_LOGRADOURO on
+           (endereco.fk_TIPO_LOGRADOURO_codigo = TIPO_LOGRADOURO.codigo)
+           order by endereco.logradouro;
 
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
     a) Criar minimo 2 envolvendo algum tipo de junção
