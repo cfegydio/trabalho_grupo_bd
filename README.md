@@ -454,7 +454,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
     c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
        –1) Renomear telefone para celular
-       select telefone as celular from telefone ;
+       alter table TELEFONE rename column telefone to celular;
 
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
     -- a) Criar outras 5 consultas que envolvam like ou ilike
