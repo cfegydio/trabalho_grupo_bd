@@ -467,8 +467,43 @@ Yasmin Santana: mamin8172@gmail.com<br>
        select telefone as celular from telefone ;
 
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
-    a) Criar outras 5 consultas que envolvam like ou ilike
-    b) Criar uma consulta para cada tipo de função data apresentada.
+    -- a) Criar outras 5 consultas que envolvam like ou ilike
+    -- Consulta 01 - Selecionar todos os produtos que são bolos
+    SELECT * FROM PRODUTO WHERE nome LIKE 'Bolo%'
+
+    -- Consulta 02 - Selecionar todos os produtos que contém massa branca
+    SELECT * FROM PRODUTO WHERE descricao LIKE '%branc%'
+
+    -- Consulta 03 - Selecionar todos os motoboys que tem sobrenome Frinhani
+    SELECT * FROM MOTOBOY WHERE nome LIKE '%Frinhani%'
+
+    -- Consulta 04 - Selecionar todos os bairros que começam com B
+    SELECT bairro FROM BAIRRO WHERE bairro LIKE 'B%'
+
+    -- Consulta 05 - Selecionar todas as fatias que contém chocolate
+    SELECT * FROM PRODUTO WHERE (nome LIKE 'Fatia%') AND (nome LIKE "______Choco%")
+
+    -- b) Criar uma consulta para cada tipo de função data apresentada.
+    -- Consulta 06 - Descobrir há quanto tempo cada pedido foi feito no sistema
+    SELECT codigo, current_date as data_atual, data_hora, age(current_date, data_hora) as tempo_passado FROM PEDIDO
+
+    -- Consulta 07 - Descobrir todos os pedidos feitos no mês 10
+    SELECT * FROM PEDIDO WHERE extract('month' from data_hora) == 9
+
+    -- Consulta 08 - Descobrir o dia da semana que os pedidos foram feitos
+    SELECT codigo, date_part('dow' from data_hora) as daia_da_semana FROM PEDIDO
+
+    -- Consulta 09 - Selecionar as placas de moto que começam com 1
+    SELECT placa_moto FROM MOTOBOY WHERE placa_moto LIKE '1%'
+
+    -- Consulta 10 - selecionar todos os cpf's que começam com 1
+    SELECT nome, cpf FROM CLIENTE WHERE cpf LIKE '1%'
+
+    -- Consulta 11 - Descobrir todos os pedidos feitos no dia 01 do mês 10
+    SELECT * FROM PEDIDO WHERE extract('month' from data_hora) == 10 AND extract('day' from data_hora) == 1
+
+    -- Consulta 12 - Descobrir todos os cep's que começam com 29160
+    SELECT cep FROM ENDERECO WHERE cep LIKE '29160%'
 
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
     a) Criar minimo 3 de exclusão
