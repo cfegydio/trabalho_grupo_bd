@@ -473,7 +473,6 @@ Yasmin Santana: mamin8172@gmail.com<br>
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
     a) Criar minimo 3 de exclusão
     b) Criar minimo 3 de atualização
-    
     --1) Atualiza os nomes dos bolos para Bolo de Aniversário
     update produto set nome='Bolo de aniversário' where preco=120.0;
 
