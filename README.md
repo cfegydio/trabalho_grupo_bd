@@ -434,8 +434,24 @@ Yasmin Santana: mamin8172@gmail.com<br>
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
+     --1) Salários iniciais maiores/iguais a 600 ou menores/iguais a 1000
+     select motoboy.nome, motoboy.salario from motoboy where salario >= 600.00 and salario <= 1000.00;
+
+     --2) Mostra endereços onde complemento não é vazio (código 9)
+     select endereco.logradouro, endereco.fk_complemento_codigo from endereco where (fk_complemento_codigo >=1 and fk_complemento_codigo <9) or fk_complemento_codigo <> 9;
+
     b) Criar no mínimo 3 consultas com operadores aritméticos 
+     --2) Mostra nome dos motoboys, salários do motoboy  e o salário mais 10% de bônus anual
+     select motoboy.nome, motoboy.salario,
+     motoboy.salario + (motoboy.salario*0.1) as bonus_sal_anual from motoboy;
+
+     -–3) Mostra nome dos produtos, preco do produto e o produto mais o aumento de 5% anual
+     select produto.nome, produto.preco,
+     produto.preco + (produto.preco*0.05) as aumento_anual_produto from produto;
+
     c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
+       –1) Renomear telefone para celular
+       select telefone as celular from telefone ;
 
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
     a) Criar outras 5 consultas que envolvam like ou ilike
