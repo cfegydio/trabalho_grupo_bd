@@ -520,9 +520,9 @@ Yasmin Santana: mamin8172@gmail.com<br>
     --1) Atualiza os nomes dos bolos para Bolo de Aniversário
     update produto set nome='Bolo de aniversário' where preco=120.0;
 
-    --2) Atualiza a forma de pagamento pix para Boleto Bancário
-    update forma_pagamento set forma='Boleto Bancário' where codigo=1;
-
+    --2) Atualiza a forma de pagamento Cheque para Boleto Bancário
+    update forma_pagamento set forma='Boleto Bancário' where codigo=5;
+    
     --3) Atualiza o cep do Rio Tocantins
     update endereco set cep='29280-551' where codigo=12;
 
