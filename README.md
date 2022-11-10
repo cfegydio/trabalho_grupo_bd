@@ -586,8 +586,32 @@ Yasmin Santana: mamin8172@gmail.com<br>
         b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
 
 #### 9.10	SUBCONSULTAS (Mínimo 4)<br>
-     a) Criar minimo 1 envolvendo GROUP BY
-     b) Criar minimo 1 envolvendo algum tipo de junção
+
+        --1) Os pedidos que foram pagos pelo pix
+        SELECT * from pedido 
+        WHERE fk_forma_pagamento_codigo IN ( SELECT fk_forma_pagamento_codigo 
+        FROM pedido 
+        WHERE fk_forma_pagamento_codigo = 1) 
+        
+        --2) Os produtos que custam o mesmo preço
+        SELECT * from produto 
+        WHERE preco IN ( 7.0, 8.0, 9.0, 12.0, 120.0 )
+       
+         a) Criar minimo 1 envolvendo GROUP BY
+         --3) Quantidade de vezes que aparecem os bairros Jardim Camburi e Hélio Ferraz
+         select fk_bairro_codigo, COUNT(*) 
+         from endereco
+         WHERE fk_bairro_codigo IN (3, 10) 
+         GROUP BY fk_bairro_codigo
+         
+         b) Criar minimo 1 envolvendo algum tipo de junção
+         --4) Quantidade de avenidas e ruas cadastradas nos endereços de entrega
+         Select tipo_logradouro.tipo, COUNT(*) 
+         from tipo_logradouro 
+         inner join 
+         endereco on (endereco.fk_tipo_logradouro_codigo = tipo_logradouro.codigo) 
+         WHERE endereco.fk_tipo_logradouro_codigo IN (33, 4) 
+         GROUP BY(tipo_logradouro.tipo)
 
 ># Marco de Entrega 02: Do item 9.2 até o ítem 9.10<br>
 
