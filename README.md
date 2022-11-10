@@ -518,30 +518,36 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 #### 9.6	CONSULTAS COM INNER JOIN E ORDER BY (Mínimo 6)<br>
     a) Uma junção que envolva todas as tabelas possuindo no mínimo 2 registros no resultado
-            –1) Relatório com informações a mais sobre o pedido
-            select cliente.nome as "Nome do cliente", telefone.telefone as "Telefone do cliente",
-            pedido.codigo as "Código do pedido", endereco.logradouro as "Logradouro",
-            forma_pagamento.forma as "Forma de pagamento", motoboy.nome as "Nome do motoboy",
-            pedido_produto.qtd as "Quantidade de produtos no pedido",
-            produto.nome as "Nome do produto", (produto.preco *pedido_produto.qtd) as "Valor total do pedido"
-            from cliente inner join telefone
-            on (cliente.codigo = telefone.fk_CLIENTE_codigo)inner join pedido
-            on (pedido.fk_cliente_codigo = cliente.codigo)inner join endereco
-            on (pedido.fk_endereco_codigo =  endereco.codigo) inner join forma_pagamento
-            on (forma_pagamento.codigo = pedido.fk_forma_pagamento_codigo) inner join motoboy
-            on (pedido.fk_motoboy_codigo = motoboy.codigo) inner join pedido_produto
-            on (pedido_produto.FK_pedido_codigo = pedido.codigo ) inner join produto
-            on (pedido_produto.FK_produto_codigo = produto.codigo)
-            order by cliente.nome;
+        --1) Relatório com informações completas sobre o pedidp
+        select cliente.nome as "Nome do cliente", telefone.telefone as "Telefone do cliente",
+        pedido.codigo as "Código do pedido", endereco.cep as "Cep do endereço", endereco.numero as "Número do endereço",
+        tipo_logradouro.tipo "Tipo do logradouro", endereco.logradouro as "Nome do logradouro", bairro.bairro as "Nome do bairro",
+        cidade.cidade as "Nome da cidade", complemento.complemento as "Complemento do endereço",
+        forma_pagamento.forma as "Forma de pagamento", motoboy.nome as "Nome do motoboy",
+        pedido_produto.qtd as "Quantidade de produtos no pedido",
+        produto.nome as "Nome do produto", (produto.preco *pedido_produto.qtd) as "Valor total do pedido"
+        from cliente inner join telefone
+        on (cliente.codigo = telefone.fk_CLIENTE_codigo)inner join pedido
+        on (pedido.fk_cliente_codigo = cliente.codigo)inner join endereco
+        on (pedido.fk_endereco_codigo =  endereco.codigo) inner join tipo_logradouro 
+        on (endereco.fk_tipo_logradouro_codigo = tipo_logradouro.codigo ) inner join bairro 
+        on (endereco.fk_bairro_codigo = bairro.codigo) inner join cidade 
+        on (endereco.fk_cidade_codigo = cidade.codigo)inner join complemento 
+        on (endereco.fk_complemento_codigo = complemento.codigo) inner join forma_pagamento
+        on (forma_pagamento.codigo = pedido.fk_forma_pagamento_codigo) inner join motoboy
+        on (pedido.fk_motoboy_codigo = motoboy.codigo) inner join pedido_produto
+        on (pedido_produto.FK_pedido_codigo = pedido.codigo ) inner join produto
+        on (pedido_produto.FK_produto_codigo = produto.codigo)
+        order by cliente.nome;
 
     b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
-           –2) Quantidade de telefone por cliente
+           --2) Quantidade de telefone por cliente
            select cliente.nome, count(telefone.telefone) as qtd_tel_cliente from cliente
            inner join telefone on(cliente.codigo = telefone.fk_CLIENTE_codigo)
            group by cliente.nome
            order by cliente.nome;
 
-           –3) Valor total de cada pedido que o cliente já fez
+           --3) Valor total de cada pedido que o cliente já fez
            select cliente.nome as "Nome do cliente",
            (pedido_produto.qtd * produto.preco) as "Valor por pedido",
            produto.nome as "Nome do produto"
@@ -551,14 +557,14 @@ Yasmin Santana: mamin8172@gmail.com<br>
            inner join produto on (pedido_produto.fk_produto_codigo = produto.codigo)
            order by cliente.nome
 
-           –4) Códigos dos pedidos realizados pelos motoboys
+           --4) Códigos dos pedidos realizados pelos motoboys
            select motoboy.nome as "Nome do motoboy",
            pedido.fk_motoboy_codigo as "Códigos das entregas que realizadas"
            from motoboy inner join pedido on
            (motoboy.codigo = pedido.fk_motoboy_codigo)
            order by motoboy.nome
 
-           –5) Forma de pagamento escolhida a cada pedido feito pelo cliente 
+           --5) Forma de pagamento escolhida a cada pedido feito pelo cliente 
            select forma_pagamento.forma as "Formas de pagamento escolhida",
            pedido.codigo as "Código do pedido",
            cliente.nome as "Nome do cliente"
@@ -567,7 +573,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
            cliente on (pedido.fk_cliente_codigo = cliente.codigo)
            order by cliente.nome
 
-           –6) Logradouro do endereço, tipo de logradouro e seu respectivo complemento
+           --6) Logradouro do endereço, tipo de logradouro e seu respectivo complemento
            select endereco.logradouro as "Logradouro",
            TIPO_LOGRADOURO.tipo as "Tipo do logradouro", complemento.complemento as "Complemento logradouro" from endereco
            inner join complemento on (endereco.fk_complemento_codigo = complemento.codigo)
@@ -584,6 +590,33 @@ Yasmin Santana: mamin8172@gmail.com<br>
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
         a) Uma junção que envolva Self Join (caso não ocorra na base justificar e substituir por uma view)
         b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
+         --1) View mostrando os motoboys e seus respectivos salários mensais
+            create view motoboys_salarios as 
+            select motoboy.nome as "Nome do motoboy", 
+            motoboy.salario as "Salário mensal"
+            from motoboy;
+
+         --2) View mostrando o valor por cada pedido ordenado pelos valores de forma crescente
+            create view valor_por_pedido as 
+            select cliente.nome as "Nome do cliente", (pedido_produto.qtd * produto.preco) as "Valores por pedido" 
+            from cliente
+            inner join pedido on (cliente.codigo = pedido.fk_cliente_codigo) 
+            inner join pedido_produto on (pedido.codigo = pedido_produto.fk_pedido_codigo) 
+            inner join produto on (pedido_produto.fk_produto_codigo = produto.codigo)
+            order by "Valores por pedido";
+
+        --3) View para mostrar endereço detalhado ordenado pelo código do endereço
+            create view endereco_detalhado as
+            select endereco.codigo as "Código do endereço", endereco.cep as "Cep do endereço", endereco.numero as "Número do endereço",
+            tipo_logradouro.tipo "Tipo do logradouro", endereco.logradouro as "Nome do logradouro", bairro.bairro as "Nome do bairro",
+            cidade.cidade as "Nome da cidade", complemento.complemento as "Complemento do endereço"
+            from endereco
+            inner join tipo_logradouro on (endereco.fk_tipo_logradouro_codigo = tipo_logradouro.codigo )
+            inner join bairro on (endereco.fk_bairro_codigo = bairro.codigo)
+            inner join cidade on (endereco.fk_cidade_codigo = cidade.codigo)
+            inner join complemento on (endereco.fk_complemento_codigo = complemento.codigo)
+order by endereco.codigo;
+
 
 #### 9.10	SUBCONSULTAS (Mínimo 4)<br>
 
