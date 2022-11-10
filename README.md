@@ -432,6 +432,19 @@ Yasmin Santana: mamin8172@gmail.com<br>
 ># Marco de Entrega 01: Do item 1 até o item 9.1<br>
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
+
+      --1) Mostra todos produtos onde o preço é igual a 120.00, pois são os bolos de festa
+      select * from produto where preco=120.0;
+
+     --2) Mostra a quantidade de fatias (produto = 1 a 5) compradas 
+     select * from pedido_produto where fk_produto_codigo>=1 and fk_produto_codigo<=5;
+
+     --3)Mostra os endereços dos bairros da cidade da Serra
+     select * from endereco where fk_cidade_codigo=2;
+
+     --4) Mostra as entregas realizadas pelos motoboys com salario menor
+     select * from pedido where fk_motoboy_codigo>=300 and fk_motoboy_codigo<=500;
+     
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
      --1) Salários iniciais maiores/iguais a 600 ou menores/iguais a 1000
