@@ -510,8 +510,8 @@ Yasmin Santana: mamin8172@gmail.com<br>
     --1) Deleta o bairro Jardim da Penha
     delete from bairro where codigo=4;
 
-    --2) Deleta o pedido 110 em pedido_produto
-    delete from pedido_produto where fk_pedido_codigo =110;
+    --2) Deleta a segunda opção de telefone para o cliente de codigo 30 
+    delete from telefone where telefone=333333333;
 
     --3) Deleta o tipo logradouro 'Esplanada'
     delete from tipo_logradouro where codigo=11;
