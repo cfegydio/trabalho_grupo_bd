@@ -473,6 +473,15 @@ Yasmin Santana: mamin8172@gmail.com<br>
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
     a) Criar minimo 3 de exclusão
     b) Criar minimo 3 de atualização
+    
+    --1) Atualiza os nomes dos bolos para Bolo de Aniversário
+    update produto set nome='Bolo de aniversário' where preco=120.0;
+
+    --2) Atualiza a forma de pagamento pix para Boleto Bancário
+    update forma_pagamento set forma='Boleto Bancário' where codigo=1;
+
+    --3) Atualiza o cep do Rio Tocantins
+    update endereco set cep='29280-551' where codigo=12;
 
 #### 9.6	CONSULTAS COM INNER JOIN E ORDER BY (Mínimo 6)<br>
     a) Uma junção que envolva todas as tabelas possuindo no mínimo 2 registros no resultado
