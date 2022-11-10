@@ -507,6 +507,15 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
     a) Criar minimo 3 de exclusão
+    --1) Deleta o bairro Jardim da Penha
+    delete from bairro where codigo=4;
+
+    --2) Deleta o pedido 110 em pedido_produto
+    delete from pedido_produto where fk_pedido_codigo =110;
+
+    --3) Deleta o tipo logradouro 'Esplanada'
+    delete from tipo_logradouro where codigo=11;
+    
     b) Criar minimo 3 de atualização
     --1) Atualiza os nomes dos bolos para Bolo de Aniversário
     update produto set nome='Bolo de aniversário' where preco=120.0;
