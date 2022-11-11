@@ -585,7 +585,33 @@ Yasmin Santana: mamin8172@gmail.com<br>
     a) Criar minimo 2 envolvendo algum tipo de junção
 
 #### 9.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN (Mínimo 4)<br>
-    a) Criar minimo 1 de cada tipo
+    -- Consulta 01 - Mostrar apenas os produtos que são fatia dos pedidos
+    SELECT PEDIDO_PRODUTO.FK_PEDIDO_codigo, PRODUTO.nome
+    FROM
+        PRODUTO
+    RIGHT JOIN PEDIDO_PRODUTO
+       ON PRODUTO.codigo = PEDIDO_PRODUTO.FK_PRODUTO_codigo AND PRODUTO.codigo < 6;
+
+    -- Consulta 02 - Mostrar bairros apenas bairros que começam com a letra B dos endereços
+    SELECT ENDERECO.codigo as codigo_endereco, BAIRRO.bairro
+    FROM
+        ENDERECO
+    LEFT JOIN BAIRRO
+       ON ENDERECO.fk_BAIRRO_codigo = BAIRRO.codigo AND BAIRRO.bairro LIKE 'B%';
+
+    -- Consulta 03 - Mostrar todos os tipos de logradouro no sistema, mas apenas mostrar o tipo dos endereços onde o tipo é rua
+    SELECT ENDERECO.codigo as codigo_endereco, TIPO_LOGRADOURO.tipo
+    FROM
+        TIPO_LOGRADOURO
+    FULL JOIN ENDERECO
+        ON ENDERECO.fk_TIPO_LOGRADOURO_codigo = TIPO_LOGRADOURO.codigo AND TIPO_LOGRADOURO.codigo = 33;
+
+    -- Consulta 04 - Mostrar apenas a forma de pagamento dos pedidos que compraram em dinheiro
+    SELECT PEDIDO.codigo, FORMA_PAGAMENTO.forma
+    FROM
+        PEDIDO
+    LEFT JOIN FORMA_PAGAMENTO
+       ON PEDIDO.FK_FORMA_PAGAMENTO_codigo = FORMA_PAGAMENTO.codigo AND FORMA_PAGAMENTO.codigo = 2;
 
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
         a) Uma junção que envolva Self Join (caso não ocorra na base justificar e substituir por uma view)
