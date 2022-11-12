@@ -423,142 +423,145 @@ Yasmin Santana: mamin8172@gmail.com<br>
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
 
-     -- Consulta 01 - Mostra todos produtos onde o preço é igual a 120.00, pois são os bolos de festa
-     select * from produto where preco=120.0;
+    -- Consulta 01 - Mostra todos produtos onde o preço é igual a 120.00, pois são os bolos de festa
+        select * from produto where preco=120.0;
 
-     -- Consulta 02 - Mostra a quantidade de fatias (produto = 1 a 5) compradas 
-     select * from pedido_produto where fk_produto_codigo>=1 and fk_produto_codigo<=5;
+    -- Consulta 02 - Mostra a quantidade de fatias (produto = 1 a 5) compradas 
+        select * from pedido_produto where fk_produto_codigo>=1 and fk_produto_codigo<=5;
 
-     -- Consulta 03 - Mostra os endereços dos bairros da cidade da Serra
-     select * from endereco where fk_cidade_codigo=2;
+    -- Consulta 03 - Mostra os endereços dos bairros da cidade da Serra
+        select * from endereco where fk_cidade_codigo=2;
 
-     -- Consulta 04 - Mostra as entregas realizadas pelos motoboys com salario menor
-     select * from pedido where fk_motoboy_codigo>=300 and fk_motoboy_codigo<=500;
+    -- Consulta 04 - Mostra as entregas realizadas pelos motoboys com salario menor
+        select * from pedido where fk_motoboy_codigo>=300 and fk_motoboy_codigo<=500;
      
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
-     -- a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
-     -- Consulta 01 - Salários iniciais maiores/iguais a 600 ou menores/iguais a 1000
-     select motoboy.nome, motoboy.salario from motoboy where salario >= 600.00 and salario <= 1000.00;
 
-     -- Consulta 02 - Mostra endereços onde complemento não é vazio (código 9)
-     select endereco.logradouro, endereco.fk_complemento_codigo from endereco where (fk_complemento_codigo >=1 and fk_complemento_codigo <9) or fk_complemento_codigo <> 9;
+    -- a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
+    -- Consulta 01 - Salários iniciais maiores/iguais a 600 ou menores/iguais a 1000
+        select motoboy.nome, motoboy.salario from motoboy where salario >= 600.00 and salario <= 1000.00;
+
+    -- Consulta 02 - Mostra endereços onde complemento não é vazio (código 9)
+        select endereco.logradouro, endereco.fk_complemento_codigo from endereco where (fk_complemento_codigo >=1 and fk_complemento_codigo <9) or fk_complemento_codigo <> 9;
      
-     -- Consulta 03 - Mostra quantas vezes o pix e o dinheiro foram usados para pagar compras, do maior pro menor.
-    SELECT FORMA_PAGAMENTO.forma, COUNT(PRODUTO.nome) as "quantidade_de_vezes_usado" FROM PEDIDO
-    INNER JOIN FORMA_PAGAMENTO ON FORMA_PAGAMENTO.codigo = PEDIDO.fk_forma_pagamento_codigo
-    INNER JOIN PEDIDO_PRODUTO ON PEDIDO_PRODUTO.fk_pedido_codigo = PEDIDO.codigo
-    INNER JOIN PRODUTO ON PRODUTO.codigo = PEDIDO_PRODUTO.fk_produto_codigo
-    WHERE FORMA_PAGAMENTO.codigo = 1 OR FORMA_PAGAMENTO.CODIGO = 2
-    GROUP BY FORMA_PAGAMENTO.forma
-    ORDER BY quantidade_de_vezes_usado DESC;
+    -- Consulta 03 - Mostra quantas vezes o pix e o dinheiro foram usados para pagar compras, do maior pro menor.
+        SELECT FORMA_PAGAMENTO.forma, COUNT(PRODUTO.nome) as "quantidade_de_vezes_usado" FROM PEDIDO
+        INNER JOIN FORMA_PAGAMENTO ON FORMA_PAGAMENTO.codigo = PEDIDO.fk_forma_pagamento_codigo
+        INNER JOIN PEDIDO_PRODUTO ON PEDIDO_PRODUTO.fk_pedido_codigo = PEDIDO.codigo
+        INNER JOIN PRODUTO ON PRODUTO.codigo = PEDIDO_PRODUTO.fk_produto_codigo
+        WHERE FORMA_PAGAMENTO.codigo = 1 OR FORMA_PAGAMENTO.CODIGO = 2
+        GROUP BY FORMA_PAGAMENTO.forma
+        ORDER BY quantidade_de_vezes_usado DESC;
     
     -- Consulta 04 - Mostra o código dos pedidos realizados em Jardim Camburi, bairro de Vitória.
-    SELECT PEDIDO.codigo, ENDERECO.cep, CIDADE.cidade, BAIRRO.bairro FROM PEDIDO
-    INNER JOIN ENDERECO ON ENDERECO.codigo = PEDIDO.fk_endereco_codigo
-    INNER JOIN CIDADE ON CIDADE.codigo = ENDERECO.fk_cidade_codigo
-    INNER JOIN BAIRRO ON BAIRRO.codigo = ENDERECO.fk_bairro_codigo
-    WHERE CIDADE.codigo = 1 AND BAIRRO.codigo = 3;
-    
+        SELECT PEDIDO.codigo, ENDERECO.cep, CIDADE.cidade, BAIRRO.bairro FROM PEDIDO
+        INNER JOIN ENDERECO ON ENDERECO.codigo = PEDIDO.fk_endereco_codigo
+        INNER JOIN CIDADE ON CIDADE.codigo = ENDERECO.fk_cidade_codigo
+        INNER JOIN BAIRRO ON BAIRRO.codigo = ENDERECO.fk_bairro_codigo
+        WHERE CIDADE.codigo = 1 AND BAIRRO.codigo = 3;
+        
     -- Consulta 05 - Mostra os três primeiros clientes cadastrados e todos os clientes depois do décimo cadastro.
-    SELECT CLIENTE.nome, CLIENTE.cpf FROM CLIENTE
-    WHERE CLIENTE.codigo <= 30 OR CLIENTE.CODIGO > 100;
-
+        SELECT CLIENTE.nome, CLIENTE.cpf FROM CLIENTE
+        WHERE CLIENTE.codigo <= 30 OR CLIENTE.CODIGO > 100;
      
     -- b) Criar no mínimo 3 consultas com operadores aritméticos 
-    --1) Mostra nome dos motoboys, salários do motoboy  e o salário mais 10% de bônus anual
-     select motoboy.nome, motoboy.salario,
-     motoboy.salario + (motoboy.salario*0.1) as bonus_sal_anual from motoboy;
+    -- Consulta 06 - Mostra nome dos motoboys, salários do motoboy  e o salário mais 10% de bônus anual
+        select motoboy.nome, motoboy.salario,
+        motoboy.salario + (motoboy.salario*0.1) as bonus_sal_anual from motoboy;
 
-    -–2) Mostra nome dos produtos, preco do produto e o produto mais o aumento de 5% anual
-     select produto.nome, produto.preco,
-     produto.preco + (produto.preco*0.05) as aumento_anual_produto from produto;
+    -- Consulta 07 - Mostra nome dos produtos, preco do produto e o produto mais o aumento de 5% anual
+        select produto.nome, produto.preco,
+        produto.preco + (produto.preco*0.05) as aumento_anual_produto from produto;
      
-    --3) Mostra quantos reais a empresa recebeu das entregas de cada motoboy
-    SELECT MOTOBOY.nome, SUM(PEDIDO_PRODUTO.qtd * PRODUTO.preco) AS "valor_recebido_das_entregas" FROM PEDIDO 
-    INNER JOIN MOTOBOY ON MOTOBOY.codigo = PEDIDO.fk_motoboy_codigo
-    INNER JOIN PEDIDO_PRODUTO ON PEDIDO_PRODUTO.fk_pedido_codigo = PEDIDO.codigo
-    INNER JOIN PRODUTO ON PRODUTO.codigo = PEDIDO_PRODUTO.fk_produto_codigo
-    GROUP BY MOTOBOY.nome;
+    -- Consulta 08 - Mostra quantos reais a empresa recebeu das entregas de cada motoboy
+        SELECT MOTOBOY.nome, SUM(PEDIDO_PRODUTO.qtd * PRODUTO.preco) AS "valor_recebido_das_entregas" FROM PEDIDO 
+        INNER JOIN MOTOBOY ON MOTOBOY.codigo = PEDIDO.fk_motoboy_codigo
+        INNER JOIN PEDIDO_PRODUTO ON PEDIDO_PRODUTO.fk_pedido_codigo = PEDIDO.codigo
+        INNER JOIN PRODUTO ON PRODUTO.codigo = PEDIDO_PRODUTO.fk_produto_codigo
+        GROUP BY MOTOBOY.nome;
 
-    c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
-    –1) Renomear telefone do cliente com código igual a 50
-    UPDATE TELEFONE 
-    SET telefone = 12121313
-    WHERE fk_cliente_codigo = 50;
+    -- c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
+    -- Consulta 09 - Renomear telefone do cliente com código igual a 50
+        UPDATE TELEFONE 
+        SET telefone = 12121313
+        WHERE fk_cliente_codigo = 50;
        
-    -2) Renomear cheque para boleto bancário
-    UPDATE FORMA_PAGAMENTO
-    SET forma = 'Boleto Bancário'
-    WHERE codigo = 5;
+    -- Consulta 10 - Renomear cheque para boleto bancário
+        UPDATE FORMA_PAGAMENTO
+        SET forma = 'Boleto Bancário'
+        WHERE codigo = 5;
     
-    -3) Aumentar salário do motoboy de código igual a 900
-    UPDATE MOTOBOY
-    SET salario = 2100
-    WHERE codigo = 900;
+    -- Consulta 11 - Aumentar salário do motoboy de código igual a 900
+        UPDATE MOTOBOY
+        SET salario = 2100
+        WHERE codigo = 900;
 
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
+
     -- a) Criar outras 5 consultas que envolvam like ou ilike
     -- Consulta 01 - Selecionar todos os produtos que são bolos
-    SELECT * FROM PRODUTO WHERE nome LIKE 'Bolo%'
+        SELECT * FROM PRODUTO WHERE nome LIKE 'Bolo%';
 
     -- Consulta 02 - Selecionar todos os produtos que contém massa branca
-    SELECT * FROM PRODUTO WHERE descricao LIKE '%massa branc%' OR descricao LIKE '%massa de bolo branco%'
+        SELECT * FROM PRODUTO WHERE descricao LIKE '%massa branc%' OR descricao LIKE '%massa de bolo branco%';
 
     -- Consulta 03 - Selecionar todos os motoboys que tem sobrenome Frinhani
-    SELECT * FROM MOTOBOY WHERE nome LIKE '%Frinhani%'
+        SELECT * FROM MOTOBOY WHERE nome LIKE '%Frinhani%';
 
     -- Consulta 04 - Selecionar todos os bairros que começam com B
-    SELECT bairro FROM BAIRRO WHERE bairro LIKE 'B%'
+        SELECT bairro FROM BAIRRO WHERE bairro LIKE 'B%';
 
     -- Consulta 05 - Selecionar todas as fatias que contém chocolate
-    SELECT * FROM PRODUTO WHERE (nome LIKE 'Fatia%') AND (nome LIKE '______Choco%')
+        SELECT * FROM PRODUTO WHERE (nome LIKE 'Fatia%') AND (nome LIKE '______Choco%');
 
     -- b) Criar uma consulta para cada tipo de função data apresentada.
     -- Consulta 06 - Descobrir há quanto tempo cada pedido foi feito no sistema
-    SELECT codigo, current_date as data_atual, data_hora, age(current_date, data_hora) as tempo_passado FROM PEDIDO
+        SELECT codigo, current_date as data_atual, data_hora, age(current_date, data_hora) as tempo_passado FROM PEDIDO;
 
     -- Consulta 07 - Descobrir todos os pedidos feitos no mês 10
-    SELECT * FROM PEDIDO WHERE extract('month' from data_hora) = 9
+        SELECT * FROM PEDIDO WHERE extract('month' from data_hora) = 9;
 
     -- Consulta 08 - Descobrir o dia da semana que os pedidos foram feitos
-    SELECT codigo, date_part('dow', data_hora) as dia_da_semana FROM PEDIDO
+        SELECT codigo, date_part('dow', data_hora) as dia_da_semana FROM PEDIDO;
 
     -- Consulta 09 - Selecionar as placas de moto que começam com 1
-    SELECT placa_moto FROM MOTOBOY WHERE placa_moto LIKE '1%'
+        SELECT placa_moto FROM MOTOBOY WHERE placa_moto LIKE '1%';
 
     -- Consulta 10 - selecionar todos os cpf's que começam com 1
-    SELECT nome, cpf FROM CLIENTE WHERE cpf LIKE '1%'
+        SELECT nome, cpf FROM CLIENTE WHERE cpf LIKE '1%';
 
     -- Consulta 11 - Descobrir todos os pedidos feitos no dia 01 do mês 10
-    SELECT * FROM PEDIDO WHERE date_part('month', data_hora) = 10 AND date_part('day', data_hora) = 1
+        SELECT * FROM PEDIDO WHERE date_part('month', data_hora) = 10 AND date_part('day', data_hora) = 1;
 
     -- Consulta 12 - Descobrir todos os cep's que começam com 29160
-    SELECT cep FROM ENDERECO WHERE cep LIKE '29160%'
+        SELECT cep FROM ENDERECO WHERE cep LIKE '29160%';
 
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
-    a) Criar minimo 3 de exclusão
-    --1) Deleta o bairro Jardim da Penha
-    delete from bairro where codigo=4;
 
-    --2) Deleta a segunda opção de telefone para o cliente de codigo 30 
-    delete from telefone where telefone=333333333;
+    -- a) Criar minimo 3 de exclusão
+    -- Consulta 01 - Deleta o bairro Jardim da Penha
+        delete from bairro where codigo=4;
 
-    --3) Deleta o tipo logradouro 'Esplanada'
-    delete from tipo_logradouro where codigo=11;
+    -- Consulta 02 - Deleta a segunda opção de telefone para o cliente de codigo 30 
+        delete from telefone where telefone=333333333;
+
+    -- Consulta 03 - Deleta o tipo logradouro 'Esplanada'
+        delete from tipo_logradouro where codigo=11;
     
-    b) Criar minimo 3 de atualização
-    --1) Atualiza os nomes dos bolos para Bolo de Aniversário
-    update produto set nome='Bolo de aniversário' where preco=120.0;
+    -- b) Criar minimo 3 de atualização
+    -- Consulta 04 - Atualiza os nomes dos bolos para Bolo de Aniversário
+        update produto set nome='Bolo de aniversário' where preco=120.0;
 
-    --2) Atualiza a forma de pagamento Cheque para Boleto Bancário
-    update forma_pagamento set forma='Boleto Bancário' where codigo=5;
+    -- Consulta 05 - Atualiza a forma de pagamento Cheque para Boleto Bancário
+        update forma_pagamento set forma='Boleto Bancário' where codigo=5;
     
-    --3) Atualiza o cep do Rio Tocantins
-    update endereco set cep='29280-551' where codigo=12;
+    -- Consulta 06 - Atualiza o cep do Rio Tocantins
+        update endereco set cep='29280-551' where codigo=12;
 
 #### 9.6	CONSULTAS COM INNER JOIN E ORDER BY (Mínimo 6)<br>
-    a) Uma junção que envolva todas as tabelas possuindo no mínimo 2 registros no resultado
-        --1) Relatório com informações completas sobre o pedidp
+
+    -- a) Uma junção que envolva todas as tabelas possuindo no mínimo 2 registros no resultado
+    -- Consulta 01 - Relatório com informações completas sobre o pedido
         select cliente.nome as "Nome do cliente", telefone.telefone as "Telefone do cliente",
         pedido.codigo as "Código do pedido", endereco.cep as "Cep do endereço", endereco.numero as "Número do endereço",
         tipo_logradouro.tipo "Tipo do logradouro", endereco.logradouro as "Nome do logradouro", bairro.bairro as "Nome do bairro",
@@ -580,82 +583,83 @@ Yasmin Santana: mamin8172@gmail.com<br>
         on (pedido_produto.FK_produto_codigo = produto.codigo)
         order by cliente.nome;
 
-    b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
-           --2) Quantidade de telefone por cliente
-           select cliente.nome, count(telefone.telefone) as qtd_tel_cliente from cliente
-           inner join telefone on(cliente.codigo = telefone.fk_CLIENTE_codigo)
-           group by cliente.nome
-           order by cliente.nome;
+    -- b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
+    -- Consulta 02 - Quantidade de telefone por cliente
+        select cliente.nome, count(telefone.telefone) as qtd_tel_cliente from cliente
+        inner join telefone on(cliente.codigo = telefone.fk_CLIENTE_codigo)
+        group by cliente.nome
+        order by cliente.nome;
 
-           --3) Valor total de cada pedido que o cliente já fez
-           select cliente.nome as "Nome do cliente",
-           (pedido_produto.qtd * produto.preco) as "Valor por pedido",
-           produto.nome as "Nome do produto"
-           from cliente
-           inner join pedido on (cliente.codigo = pedido.fk_cliente_codigo)
-           inner join pedido_produto on (pedido.codigo = pedido_produto.fk_pedido_codigo)
-           inner join produto on (pedido_produto.fk_produto_codigo = produto.codigo)
-           order by cliente.nome
+    -- Consulta 03 - Valor total de cada pedido que o cliente já fez
+        select cliente.nome as "Nome do cliente",
+        (pedido_produto.qtd * produto.preco) as "Valor por pedido",
+        produto.nome as "Nome do produto"
+        from cliente
+        inner join pedido on (cliente.codigo = pedido.fk_cliente_codigo)
+        inner join pedido_produto on (pedido.codigo = pedido_produto.fk_pedido_codigo)
+        inner join produto on (pedido_produto.fk_produto_codigo = produto.codigo)
+        order by cliente.nome;
 
-           --4) Códigos dos pedidos realizados pelos motoboys
-           select motoboy.nome as "Nome do motoboy",
-           pedido.fk_motoboy_codigo as "Códigos das entregas que realizadas"
-           from motoboy inner join pedido on
-           (motoboy.codigo = pedido.fk_motoboy_codigo)
-           order by motoboy.nome
+    -- Consulta 04 - Códigos dos pedidos realizados pelos motoboys
+        select motoboy.nome as "Nome do motoboy",
+        pedido.fk_motoboy_codigo as "Códigos das entregas que realizadas"
+        from motoboy inner join pedido on
+        (motoboy.codigo = pedido.fk_motoboy_codigo)
+        order by motoboy.nome;
 
-           --5) Forma de pagamento escolhida a cada pedido feito pelo cliente 
-           select forma_pagamento.forma as "Formas de pagamento escolhida",
-           pedido.codigo as "Código do pedido",
-           cliente.nome as "Nome do cliente"
-           from forma_pagamento inner join pedido on
-           (forma_pagamento.codigo = pedido.fk_forma_pagamento_codigo) inner join
-           cliente on (pedido.fk_cliente_codigo = cliente.codigo)
-           order by cliente.nome
+    -- Consulta 05 - Forma de pagamento escolhida a cada pedido feito pelo cliente 
+        select forma_pagamento.forma as "Formas de pagamento escolhida",
+        pedido.codigo as "Código do pedido",
+        cliente.nome as "Nome do cliente"
+        from forma_pagamento inner join pedido on
+        (forma_pagamento.codigo = pedido.fk_forma_pagamento_codigo) inner join
+        cliente on (pedido.fk_cliente_codigo = cliente.codigo)
+        order by cliente.nome;
 
-           --6) Logradouro do endereço, tipo de logradouro e seu respectivo complemento
-           select endereco.logradouro as "Logradouro",
-           TIPO_LOGRADOURO.tipo as "Tipo do logradouro", complemento.complemento as "Complemento logradouro" from endereco
-           inner join complemento on (endereco.fk_complemento_codigo = complemento.codigo)
-           inner join TIPO_LOGRADOURO on
-           (endereco.fk_TIPO_LOGRADOURO_codigo = TIPO_LOGRADOURO.codigo)
-           order by endereco.logradouro;
+    -- Consulta 06 - Logradouro do endereço, tipo de logradouro e seu respectivo complemento
+        select endereco.logradouro as "Logradouro",
+        TIPO_LOGRADOURO.tipo as "Tipo do logradouro", complemento.complemento as "Complemento logradouro" from endereco
+        inner join complemento on (endereco.fk_complemento_codigo = complemento.codigo)
+        inner join TIPO_LOGRADOURO on
+        (endereco.fk_TIPO_LOGRADOURO_codigo = TIPO_LOGRADOURO.codigo)
+        order by endereco.logradouro;
 
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
-    a) Criar minimo 2 envolvendo algum tipo de junção
-    -- 1) Mostra qual motoboy mais entregou pedidos
+
+    -- a) Criar minimo 2 envolvendo algum tipo de junção
+    -- Consulta 01 - Mostra qual motoboy mais entregou pedidos
         SELECT MOTOBOY.nome, COUNT(PEDIDO.fk_motoboy_codigo) as "pedidos_entregues" FROM PEDIDO
         INNER JOIN MOTOBOY ON MOTOBOY.codigo = PEDIDO.fk_motoboy_codigo
         GROUP BY MOTOBOY.nome
         ORDER BY pedidos_entregues DESC;
         
-    -- 2) Mostra qual o cliente que fez mais pedidos
+    -- Consulta 02 - Mostra qual o cliente que fez mais pedidos
         SELECT CLIENTE.nome, COUNT(PEDIDO.codigo) as "quantidade_pedidos" FROM PEDIDO
         INNER JOIN CLIENTE ON CLIENTE.codigo = PEDIDO.fk_cliente_codigo
         GROUP BY CLIENTE.nome
         ORDER BY quantidade_pedidos DESC;
         
-    -- 3) Mostra qual o cliente que pediu mais coisas
+    -- Consulta 03 - Mostra qual o cliente que pediu mais coisas
         SELECT CLIENTE.nome, SUM(PEDIDO_PRODUTO.qtd) as "qtd_itens_comprados" FROM PEDIDO
         INNER JOIN CLIENTE ON CLIENTE.codigo = PEDIDO.fk_cliente_codigo
         INNER JOIN PEDIDO_PRODUTO ON PEDIDO_PRODUTO.fk_pedido_codigo = PEDIDO.codigo
         GROUP BY CLIENTE.nome
         ORDER BY qtd_itens_comprados DESC;
         
-    -- 4) Mostra qual cidade tem mais bairros cadastrados
+    -- Consulta 04 - Mostra qual cidade tem mais bairros cadastrados
         SELECT CIDADE.cidade, COUNT(ENDERECO.fk_bairro_codigo) as "qtd_bairros" FROM ENDERECO
         INNER JOIN CIDADE ON CIDADE.codigo = ENDERECO.fk_cidade_codigo
         GROUP BY CIDADE.cidade
         ORDER BY qtd_bairros DESC;
         
-    -- 5) Mostra qual cidade recebeu mais motoboys
+    -- Consulta 05 - Mostra qual cidade recebeu mais motoboys
         SELECT CIDADE.cidade, COUNT(PEDIDO.fk_motoboy_codigo) as "qtd_motoboys" FROM PEDIDO
         INNER JOIN ENDERECO ON ENDERECO.codigo = PEDIDO.fk_endereco_codigo
         INNER JOIN CIDADE ON CIDADE.codigo = ENDERECO.fk_cidade_codigo
         GROUP BY CIDADE.cidade
         ORDER BY qtd_motoboys DESC;
     
-    -- 6) Mostra quantos complementos têm nos endereços de cada cidade
+    -- Consulta 06 - Mostra quantos complementos têm nos endereços de cada cidade
         SELECT CIDADE.cidade, COUNT(COMPLEMENTO.complemento) "qtd_complementos" FROM ENDERECO
         INNER JOIN CIDADE ON CIDADE.codigo = ENDERECO.fk_cidade_codigo
         INNER JOIN COMPLEMENTO ON COMPLEMENTO.codigo = ENDERECO.fk_complemento_codigo
@@ -663,120 +667,118 @@ Yasmin Santana: mamin8172@gmail.com<br>
         GROUP BY CIDADE.cidade
         ORDER BY qtd_complementos DESC;
 
-    
-
 #### 9.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN (Mínimo 4)<br>
+
     -- Consulta 01 - Mostrar apenas os produtos que são fatia dos pedidos
-    SELECT PEDIDO_PRODUTO.FK_PEDIDO_codigo, PRODUTO.nome
-    FROM
-        PRODUTO
-    RIGHT JOIN PEDIDO_PRODUTO
-       ON PRODUTO.codigo = PEDIDO_PRODUTO.FK_PRODUTO_codigo AND PRODUTO.codigo < 6;
+        SELECT PEDIDO_PRODUTO.FK_PEDIDO_codigo, PRODUTO.nome
+        FROM
+            PRODUTO
+        RIGHT JOIN PEDIDO_PRODUTO
+        ON PRODUTO.codigo = PEDIDO_PRODUTO.FK_PRODUTO_codigo AND PRODUTO.codigo < 6;
 
     -- Consulta 02 - Mostrar bairros apenas bairros que começam com a letra B dos endereços
-    SELECT ENDERECO.codigo as codigo_endereco, BAIRRO.bairro
-    FROM
-        ENDERECO
-    LEFT JOIN BAIRRO
-       ON ENDERECO.fk_BAIRRO_codigo = BAIRRO.codigo AND BAIRRO.bairro LIKE 'B%';
+        SELECT ENDERECO.codigo as codigo_endereco, BAIRRO.bairro
+        FROM
+            ENDERECO
+        LEFT JOIN BAIRRO
+        ON ENDERECO.fk_BAIRRO_codigo = BAIRRO.codigo AND BAIRRO.bairro LIKE 'B%';
 
     -- Consulta 03 - Mostrar todos os tipos de logradouro no sistema, mas apenas mostrar o tipo dos endereços onde o tipo é rua
-    SELECT ENDERECO.codigo as codigo_endereco, TIPO_LOGRADOURO.tipo
-    FROM
-        TIPO_LOGRADOURO
-    FULL JOIN ENDERECO
-        ON ENDERECO.fk_TIPO_LOGRADOURO_codigo = TIPO_LOGRADOURO.codigo AND TIPO_LOGRADOURO.codigo = 33;
+        SELECT ENDERECO.codigo as codigo_endereco, TIPO_LOGRADOURO.tipo
+        FROM
+            TIPO_LOGRADOURO
+        FULL JOIN ENDERECO
+            ON ENDERECO.fk_TIPO_LOGRADOURO_codigo = TIPO_LOGRADOURO.codigo AND TIPO_LOGRADOURO.codigo = 33;
 
     -- Consulta 04 - Mostrar apenas a forma de pagamento dos pedidos que compraram em dinheiro
-    SELECT PEDIDO.codigo, FORMA_PAGAMENTO.forma
-    FROM
-        PEDIDO
-    LEFT JOIN FORMA_PAGAMENTO
-       ON PEDIDO.FK_FORMA_PAGAMENTO_codigo = FORMA_PAGAMENTO.codigo AND FORMA_PAGAMENTO.codigo = 2;
+        SELECT PEDIDO.codigo, FORMA_PAGAMENTO.forma
+        FROM
+            PEDIDO
+        LEFT JOIN FORMA_PAGAMENTO
+        ON PEDIDO.FK_FORMA_PAGAMENTO_codigo = FORMA_PAGAMENTO.codigo AND FORMA_PAGAMENTO.codigo = 2;
 
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
-        a) Uma junção que envolva Self Join (caso não ocorra na base justificar e substituir por uma view)
-        b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
-         --1) View mostrando os motoboys e seus respectivos salários mensais
-            create view motoboys_salarios as 
-            select motoboy.nome as "Nome do motoboy", 
-            motoboy.salario as "Salário mensal"
-            from motoboy;
 
-         --2) View mostrando o valor por cada pedido ordenado pelos valores de forma crescente
-            create view valor_por_pedido as 
-            select cliente.nome as "Nome do cliente", (pedido_produto.qtd * produto.preco) as "Valores por pedido" 
-            from cliente
-            inner join pedido on (cliente.codigo = pedido.fk_cliente_codigo) 
-            inner join pedido_produto on (pedido.codigo = pedido_produto.fk_pedido_codigo) 
-            inner join produto on (pedido_produto.fk_produto_codigo = produto.codigo)
-            order by "Valores por pedido";
+    -- a) Uma junção que envolva Self Join (caso não ocorra na base justificar e substituir por uma view)
+    -- b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
+    -- Consulta 01 - View mostrando os motoboys e seus respectivos salários mensais
+        create view motoboys_salarios as 
+        select motoboy.nome as "Nome do motoboy", 
+        motoboy.salario as "Salário mensal"
+        from motoboy;
 
-        --3) View para mostrar endereço detalhado ordenado pelo código do endereço
-            create view endereco_detalhado as
-            select endereco.codigo as "Código do endereço", endereco.cep as "Cep do endereço", endereco.numero as "Número do endereço",
-            tipo_logradouro.tipo "Tipo do logradouro", endereco.logradouro as "Nome do logradouro", bairro.bairro as "Nome do bairro",
-            cidade.cidade as "Nome da cidade", complemento.complemento as "Complemento do endereço"
-            from endereco
-            inner join tipo_logradouro on (endereco.fk_tipo_logradouro_codigo = tipo_logradouro.codigo )
-            inner join bairro on (endereco.fk_bairro_codigo = bairro.codigo)
-            inner join cidade on (endereco.fk_cidade_codigo = cidade.codigo)
-            inner join complemento on (endereco.fk_complemento_codigo = complemento.codigo)
-            order by endereco.codigo;
-            
-        --4) View para mostrar as formas de pagamento mais usadas:
-            CREATE VIEW forma_pagamento_mais_utilizada AS
-            SELECT FORMA_PAGAMENTO.forma, COUNT(PEDIDO.fk_forma_pagamento_codigo) as "quantidade_total_usado" FROM FORMA_PAGAMENTO
-            INNER JOIN PEDIDO ON FORMA_PAGAMENTO.codigo = PEDIDO.fk_forma_pagamento_codigo
-            GROUP BY FORMA_PAGAMENTO.forma
-            ORDER BY quantidade_total_usado DESC;
-            
-        --5) View para mostrar o produto mais vendido:
-            CREATE VIEW produto_mais_pedido AS 
-            SELECT PRODUTO.nome, COUNT(PEDIDO_PRODUTO.qtd) as "quantidade_pedida" FROM PEDIDO
-            INNER JOIN pedido_produto ON pedido_produto.fk_pedido_codigo = PEDIDO.codigo
-            INNER JOIN PRODUTO ON PRODUTO.codigo = pedido_produto.fk_produto_codigo
-            GROUP BY PRODUTO.nome
-            ORDER BY quantidade_pedida DESC;
-            
-        --6) View para mostrar o pedido mais caro:
-            CREATE VIEW pedido_mais_caro AS
-            SELECT CLIENTE.nome, PEDIDO.codigo, PEDIDO_PRODUTO.qtd * PRODUTO.preco AS "valor" FROM PEDIDO
-            INNER JOIN CLIENTE ON CLIENTE.codigo = PEDIDO.fk_cliente_codigo
-            INNER JOIN PEDIDO_PRODUTO ON PEDIDO_PRODUTO.fk_pedido_codigo = PEDIDO.codigo
-            INNER JOIN PRODUTO ON PRODUTO.codigo = PEDIDO_PRODUTO.fk_produto_codigo
-            ORDER BY valor DESC;
-            
-            
+    -- Consulta 02 - View mostrando o valor por cada pedido ordenado pelos valores de forma crescente
+        create view valor_por_pedido as 
+        select cliente.nome as "Nome do cliente", (pedido_produto.qtd * produto.preco) as "Valores por pedido" 
+        from cliente
+        inner join pedido on (cliente.codigo = pedido.fk_cliente_codigo) 
+        inner join pedido_produto on (pedido.codigo = pedido_produto.fk_pedido_codigo) 
+        inner join produto on (pedido_produto.fk_produto_codigo = produto.codigo)
+        order by "Valores por pedido";
+
+    -- Consulta 03 - View para mostrar endereço detalhado ordenado pelo código do endereço
+        create view endereco_detalhado as
+        select endereco.codigo as "Código do endereço", endereco.cep as "Cep do endereço", endereco.numero as "Número do endereço",
+        tipo_logradouro.tipo "Tipo do logradouro", endereco.logradouro as "Nome do logradouro", bairro.bairro as "Nome do bairro",
+        cidade.cidade as "Nome da cidade", complemento.complemento as "Complemento do endereço"
+        from endereco
+        inner join tipo_logradouro on (endereco.fk_tipo_logradouro_codigo = tipo_logradouro.codigo )
+        inner join bairro on (endereco.fk_bairro_codigo = bairro.codigo)
+        inner join cidade on (endereco.fk_cidade_codigo = cidade.codigo)
+        inner join complemento on (endereco.fk_complemento_codigo = complemento.codigo)
+        order by endereco.codigo;
+
+    -- Consulta 04 - View para mostrar as formas de pagamento mais usadas:
+        CREATE VIEW forma_pagamento_mais_utilizada AS
+        SELECT FORMA_PAGAMENTO.forma, COUNT(PEDIDO.fk_forma_pagamento_codigo) as "quantidade_total_usado" FROM FORMA_PAGAMENTO
+        INNER JOIN PEDIDO ON FORMA_PAGAMENTO.codigo = PEDIDO.fk_forma_pagamento_codigo
+        GROUP BY FORMA_PAGAMENTO.forma
+        ORDER BY quantidade_total_usado DESC;
+
+    -- Consulta 05 - View para mostrar o produto mais vendido:
+        CREATE VIEW produto_mais_pedido AS 
+        SELECT PRODUTO.nome, COUNT(PEDIDO_PRODUTO.qtd) as "quantidade_pedida" FROM PEDIDO
+        INNER JOIN pedido_produto ON pedido_produto.fk_pedido_codigo = PEDIDO.codigo
+        INNER JOIN PRODUTO ON PRODUTO.codigo = pedido_produto.fk_produto_codigo
+        GROUP BY PRODUTO.nome
+        ORDER BY quantidade_pedida DESC;
+
+    -- Consulta 06 - View para mostrar o pedido mais caro:
+        CREATE VIEW pedido_mais_caro AS
+        SELECT CLIENTE.nome, PEDIDO.codigo, PEDIDO_PRODUTO.qtd * PRODUTO.preco AS "valor" FROM PEDIDO
+        INNER JOIN CLIENTE ON CLIENTE.codigo = PEDIDO.fk_cliente_codigo
+        INNER JOIN PEDIDO_PRODUTO ON PEDIDO_PRODUTO.fk_pedido_codigo = PEDIDO.codigo
+        INNER JOIN PRODUTO ON PRODUTO.codigo = PEDIDO_PRODUTO.fk_produto_codigo
+        ORDER BY valor DESC;
 
 #### 9.10	SUBCONSULTAS (Mínimo 4)<br>
 
-        --1) Os pedidos que foram pagos pelo pix
+    -- Consulta 01 - Os pedidos que foram pagos pelo pix
         SELECT * from pedido 
         WHERE fk_forma_pagamento_codigo IN ( SELECT fk_forma_pagamento_codigo 
         FROM pedido 
-        WHERE fk_forma_pagamento_codigo = 1) 
+        WHERE fk_forma_pagamento_codigo = 1);
         
-        --2) Os produtos que custam o mesmo preço
+    -- Consulta 02 - Os produtos que custam o mesmo preço
         SELECT * from produto 
-        WHERE preco IN ( 7.0, 8.0, 9.0, 12.0, 120.0 )
-       
-         a) Criar minimo 1 envolvendo GROUP BY
-         --3) Quantidade de vezes que aparecem os bairros Jardim Camburi e Hélio Ferraz
-         select fk_bairro_codigo, COUNT(*) 
-         from endereco
-         WHERE fk_bairro_codigo IN (3, 10) 
-         GROUP BY fk_bairro_codigo
-         
-         b) Criar minimo 1 envolvendo algum tipo de junção
-         --4) Quantidade de avenidas e ruas cadastradas nos endereços de entrega
-         Select tipo_logradouro.tipo, COUNT(*) 
-         from tipo_logradouro 
-         inner join 
-         endereco on (endereco.fk_tipo_logradouro_codigo = tipo_logradouro.codigo) 
-         WHERE endereco.fk_tipo_logradouro_codigo IN (33, 4) 
-         GROUP BY(tipo_logradouro.tipo)
+        WHERE preco IN ( 7.0, 8.0, 9.0, 12.0, 120.0 );
 
+    -- a) Criar minimo 1 envolvendo GROUP BY
+    -- Consulta 03 - Quantidade de vezes que aparecem os bairros Jardim Camburi e Hélio Ferraz
+        select fk_bairro_codigo, COUNT(*) 
+        from endereco
+        WHERE fk_bairro_codigo IN (3, 10) 
+        GROUP BY fk_bairro_codigo;
+
+    -- b) Criar minimo 1 envolvendo algum tipo de junção
+    -- Consulta 04 - Quantidade de avenidas e ruas cadastradas nos endereços de entrega
+        Select tipo_logradouro.tipo, COUNT(*) 
+        from tipo_logradouro 
+        inner join 
+        endereco on (endereco.fk_tipo_logradouro_codigo = tipo_logradouro.codigo) 
+        WHERE endereco.fk_tipo_logradouro_codigo IN (33, 4) 
+        GROUP BY(tipo_logradouro.tipo);
+        
 ># Marco de Entrega 02: Do item 9.2 até o ítem 9.10<br>
 
 ### 10 RELATÓRIOS E GRÁFICOS (Usar template disponibilizado)
