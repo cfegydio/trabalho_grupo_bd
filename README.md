@@ -518,7 +518,7 @@ Yasmin Santana: mamin8172@gmail.com<br>
     -- Consulta 06 - Descobrir há quanto tempo cada pedido foi feito no sistema
         SELECT codigo, current_date as data_atual, data_hora, age(current_date, data_hora) as tempo_passado FROM PEDIDO;
 
-    -- Consulta 07 - Descobrir todos os pedidos feitos no mês 10
+    -- Consulta 07 - Descobrir todos os pedidos feitos no mês 09
         SELECT * FROM PEDIDO WHERE extract('month' from data_hora) = 9;
 
     -- Consulta 08 - Descobrir o dia da semana que os pedidos foram feitos
