@@ -782,18 +782,14 @@ Yasmin Santana: mamin8172@gmail.com<br>
 ># Marco de Entrega 02: Do item 9.2 até o ítem 9.10<br>
 
 ### 10 RELATÓRIOS E GRÁFICOS (Usar template disponibilizado)
-[Template de relatórios](https://github.com/discipbdint/public_samples/blob/main/BD_Exemplo_Relatorios_Empresa_VA.ipynb "Template relatórios")
 
-#### a) análises e resultados provenientes do banco de dados desenvolvido (usar modelo disponível)
-#### b) link com exemplo de relatórios será disponiblizado pelo professor no AVA
-#### OBS: Esta é uma atividade de grande relevância no contexto do trabalho. Mantenha o foco nos 5 principais relatórios/resultados visando obter o melhor resultado possível.
+        https://colab.research.google.com/drive/1uSE9IkhvG-HmfQOWHxDfhFROpDbFAJfN?authuser=1#scrollTo=-yqR4B1S-Tk7
 
     
 
 ### 11	AJUSTES DA DOCUMENTAÇÃO, CRIAÇÃO DOS SLIDES E VÍDEO PARA APRESENTAÇAO FINAL <br>
 
-#### a) Modelo (pecha kucha)<br>
-#### b) Tempo de apresentação 6:40 
+        https://www.youtube.com/watch?v=un8GnNj-ic8&t=326s
 
 ># Marco de Entrega 03: Itens 10 e 11<br>
 <br>
